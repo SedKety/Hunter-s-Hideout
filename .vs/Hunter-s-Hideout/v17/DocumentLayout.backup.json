@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|c:\\users\\nobem\\documents\\github\\hunter-s-hideout\\assets\\enviroments\\enviromentgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\enviroments\\enviromentgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|c:\\users\\nobem\\documents\\github\\hunter-s-hideout\\assets\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\assets\\scripts\\npc\\npcstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npc\\npcstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\assets\\scripts\\guns\\templates\\gunstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\guns\\templates\\gunstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\assets\\scripts\\npc\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npc\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\assets\\scripts\\holdables\\holdable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\holdables\\holdable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\assets\\scripts\\guns\\templates\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{547A0DBB-0328-249B-DAAD-1E3D80B752C9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\guns\\templates\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnviromentGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Enviroments\\EnviromentGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Enviroments\\EnviromentGenerator.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Enviroments\\EnviromentGenerator.cs",
+              "RelativeToolTip": "Assets\\Enviroments\\EnviromentGenerator.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T12:56:56.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Player\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Player\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Player\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Player\\PlayerMovement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T10:08:53.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NpcStats.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\NPC\\NpcStats.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NPC\\NpcStats.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\NPC\\NpcStats.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NPC\\NpcStats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T09:42:33.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Npc.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\NPC\\Npc.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NPC\\Npc.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\NPC\\Npc.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NPC\\Npc.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA1wCIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T09:42:16.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Holdable.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\Holdables\\Holdable.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Holdables\\Holdable.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\Holdables\\Holdable.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Holdables\\Holdable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T09:35:32.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\Guns\\Templates\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Guns\\Templates\\Gun.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\Guns\\Templates\\Gun.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Guns\\Templates\\Gun.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T19:36:32.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GunStats.cs",
+              "DocumentMoniker": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\Guns\\Templates\\GunStats.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Guns\\Templates\\GunStats.cs",
+              "ToolTip": "C:\\Users\\nobem\\Documents\\Github\\Hunter-s-Hideout\\Assets\\Scripts\\Guns\\Templates\\GunStats.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Guns\\Templates\\GunStats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T19:36:14.876Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
