@@ -1285,8 +1285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef02bf12f019fa4d858d130bb52021a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heldItem: {fileID: 0}
-  heldItemPos: {fileID: 0}
 --- !u!4 &6471562384993835202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 150171005766949883, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}

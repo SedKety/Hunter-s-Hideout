@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Gun : Holdable
 {
+
+    #region variables
     public GunStats gunStatsSO;
     public Transform shootPoint;
 
@@ -26,12 +28,18 @@ public class Gun : Holdable
     //private int _reloadTime;
     #endregion
 
+
+    #endregion
+
+
+    #region methods
     public void Awake()
     {
         InitStats();
     }
-    //this method is called when the item is been used
-    public override void OnHeldItemUse()
+    //this method is called to perform tasks assigned to certain holdables upon using, such as healing, shooting and filling hunger,
+    //in this case it will shoot
+    public override void OnItemUse()
     {
         StartCoroutine(TryToShoot());
     }
@@ -54,10 +62,6 @@ public class Gun : Holdable
         {
             return true;
         }
-        //else if (!_isReloading)
-        //{
-        //    StartCoroutine(Reload());
-        //}
         return false;
     }
 
@@ -85,5 +89,5 @@ public class Gun : Holdable
         yield return new WaitForSeconds(_cooldownTime);
         _onCooldown = false;
     }
-
+    #endregion
 }

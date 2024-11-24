@@ -23,13 +23,13 @@ public class Npc : MonoBehaviour, IDamagable
             _canHeal = npcStats.canHeal;
         }
     }
-
+    //This method is called upon being hit
     public void TakeDamage(int damageTaken)
     {
         _health -= damageTaken;
         if(_health <= 0)
         {
-
+            OnDeath();
         }
     }
     //

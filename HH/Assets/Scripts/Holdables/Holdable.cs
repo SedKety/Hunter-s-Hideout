@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public abstract class Holdable : MonoBehaviour
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+[RequireComponent(typeof(XRGrabInteractable))]
+public abstract class Holdable : MonoBehaviour, IUsable
 {
-    //this method is called when the item is been used
-    public abstract void OnHeldItemUse();
+    //this method is called to perform tasks assigned to certain holdables upon using, such as healing, shooting and filling hunger.
+    public abstract void OnItemUse();
 }
