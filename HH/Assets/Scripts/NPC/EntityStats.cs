@@ -10,4 +10,6 @@ public class EntityStats : ScriptableObject
     public bool canHeal;
     public int healthRegen;
     public float healthRegenTimer;
+
+    public float moneyDroppedUponDeath;
 }

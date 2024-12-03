@@ -7,10 +7,11 @@ public abstract class Entity : MonoBehaviour, IDamagable
     public EntityStats npcStats;
 
     #region npcstat variables
-    [SerializeField]private int _health;
+    private int _health;
     private bool _canHeal;
     private int _healthRegen;
     private float _healthRegenTimer;
+    private float _moneyDroppedUponDeath;
     #endregion
     //Take the stats from the npcStats scriptable object and applies those to this object
     public virtual void Awake()
@@ -29,6 +30,7 @@ public abstract class Entity : MonoBehaviour, IDamagable
             _healthRegen = npcStats.healthRegen;
             _healthRegenTimer = npcStats.healthRegenTimer;
             _canHeal = npcStats.canHeal;
+            _moneyDroppedUponDeath = npcStats.moneyDroppedUponDeath;
         }
     }
     //This method is called upon being hit
@@ -42,9 +44,9 @@ public abstract class Entity : MonoBehaviour, IDamagable
         }
     }
 
-    //Finds a position to which it will move to
+    //Tries to generate a positio to move to, will return positive if it has found one
     public virtual bool GetPosToMoveTo() { return false; }
 
     //This method is executed upon health being lower then 0
-    public virtual void OnDeath() { }
+    public virtual void OnDeath() {  }
 }

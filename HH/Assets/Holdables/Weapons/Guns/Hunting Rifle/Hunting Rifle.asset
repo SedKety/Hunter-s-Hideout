@@ -16,4 +16,4 @@ MonoBehaviour:
   cooldownTime: 1
   bulletDamage: 5
   bulletObject: {fileID: 4273572417231037752, guid: 5a24e4c39258ed544b767481b7e93098, type: 3}
-  bulletSpeed: 5
+  bulletSpeed: 100

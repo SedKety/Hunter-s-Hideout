@@ -10,7 +10,7 @@ public enum HarmlessEntityStates
     running, 
     standing
 }
-public abstract  class HarmlessEntity : Entity
+public abstract class HarmlessEntity : Entity
 {
     public HarmlessEntityStates currentState;
     public NavMeshAgent agent;
@@ -18,6 +18,6 @@ public abstract  class HarmlessEntity : Entity
     public float runSpeed;
     public float normalSpeed;
 
-    //Activates method depended on what state the entity is in
+    //Switches the currentstate and acts accordingly to what method it should call
     public virtual void ActOnState(HarmlessEntityStates _state) { }
 }

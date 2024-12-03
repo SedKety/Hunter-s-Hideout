@@ -39,10 +39,12 @@ public class Deer : HarmlessEntity
     {
         ActOnState(startState);
     }
-    public  override void ActOnState(HarmlessEntityStates _state)
+
+    //Switches the currentstate and acts accordingly to what method it should call
+    public override void ActOnState(HarmlessEntityStates _state)
     {
         currentState = _state;
-        print("Deer is entering: " + _state + "  state");
+        //print("Deer is entering: " + _state + "  state");
         switch (_state)
         {
             case HarmlessEntityStates.scared:
@@ -80,16 +82,17 @@ public class Deer : HarmlessEntity
         }
     }
 
-    public override bool GetPosToMoveTo()
+    //Tries to generate a positio to move to, will return positive if it has found one
+    public override bool GetPosToMoveTo() 
     {
         Vector3 randomPos = transform.position + Random.insideUnitSphere * distanceRange;
-        print(randomPos);
+        //print(randomPos);
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPos, out hit, 100, NavMesh.AllAreas))
         {
             agent.destination = hit.position;
             currentDestination = hit.position;
-            print(hit.position);
+           // print(hit.position);
             return true;
         }
         else

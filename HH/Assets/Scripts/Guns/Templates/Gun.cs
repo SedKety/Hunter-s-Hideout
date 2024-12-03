@@ -33,8 +33,9 @@ public class Gun : Holdable
 
 
     #region methods
-    public void Awake()
+    public override void Awake()
     {
+        base.Awake();
         InitStats();
     }
     //this method is called to perform tasks assigned to certain holdables upon using, such as healing, shooting and filling hunger,
@@ -51,7 +52,7 @@ public class Gun : Holdable
         _cooldownTime = gunStatsSO.cooldownTime;
         _bulletDamage = gunStatsSO.bulletDamage;
         _bulletObject = gunStatsSO.bulletObject;
-
+        _bulletSpeed = gunStatsSO.bulletSpeed;  
         //_reloadTime = gunStatsSO.reloadTime;
     }
 
@@ -79,7 +80,7 @@ public class Gun : Holdable
     public void Shoot()
     {
         GameObject bullet = Instantiate(_bulletObject, shootPoint.position, shootPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity += new Vector3(_bulletSpeed, 0, 0);
+        bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, _bulletSpeed), ForceMode.Impulse);
         StartCoroutine(StartCooldownTimer());
     }
 
