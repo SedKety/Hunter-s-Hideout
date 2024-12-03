@@ -11,5 +11,5 @@ public class EntityStats : ScriptableObject
     public int healthRegen;
     public float healthRegenTimer;
 
-    public float moneyDroppedUponDeath;
+    public MinMax enemyWeightAmounts;
 }

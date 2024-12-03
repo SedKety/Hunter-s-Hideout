@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8408794482433003533}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shootpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 6002570886164540774}
   - component: {fileID: 3910697614397833956}
   - component: {fileID: 1382396686667629490}
-  - component: {fileID: 5557208564305617226}
-  m_Layer: 0
+  - component: {fileID: 5622337809941459494}
+  m_Layer: 7
   m_Name: Hunting rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2520d064721b94dabe02702fbe7f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
+  isThrowable: 1
+  heldByPlayer: 0
+  throwVelocityMultiplier: 1
+  velocityClamp: {x: 3, y: 3, z: 3}
+  minRequiredVelocityXYZ: 0.065
+  objectSize: 0
   gunStatsSO: {fileID: 11400000, guid: 8a0ef6537cef24e4382536f6242bf623, type: 2}
   shootPoint: {fileID: 8408794482433003533}
 --- !u!54 &3910697614397833956
@@ -101,7 +108,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -231,8 +238,8 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
---- !u!65 &5557208564305617226
-BoxCollider:
+--- !u!64 &5622337809941459494
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -244,14 +251,15 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.07949287, y: 0.2251727, z: 1.4494183}
-  m_Center: {x: 0.0009370148, y: 0.008483753, z: 0.21553123}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7769985737726468382, guid: 7a73ef6a66f648d4e9d1bc80c5f9cfbb, type: 3}
 --- !u!1001 &5542251288583128968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,6 +315,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a73ef6a66f648d4e9d1bc80c5f9cfbb, type: 3}
       propertyPath: m_Name
       value: Hunting Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a73ef6a66f648d4e9d1bc80c5f9cfbb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

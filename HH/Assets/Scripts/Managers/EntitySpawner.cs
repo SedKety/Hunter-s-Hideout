@@ -23,6 +23,7 @@ public struct TimeDependendSpawnVariables
     public float spawnTimeMultiplier;
 
     [Header("Make sure the weight adds up to 100")]
+    [Tooltip("Make sure the weight values are sorted from low to high")]
     public EntityInformation[] entities;
 }
 
@@ -39,6 +40,7 @@ public class EntitySpawner : MonoBehaviour
 
     public void Start()
     {
+
         SpawnRandomEntity();
     }
     public void SpawnRandomEntity()

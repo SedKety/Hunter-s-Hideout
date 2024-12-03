@@ -81,6 +81,7 @@ public class Gun : Holdable
     {
         GameObject bullet = Instantiate(_bulletObject, shootPoint.position, shootPoint.rotation);
         bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, _bulletSpeed), ForceMode.Impulse);
+        bullet.GetComponent<Bullet>().damage = _bulletDamage;
         StartCoroutine(StartCooldownTimer());
     }
 

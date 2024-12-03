@@ -8,7 +8,8 @@ public enum HarmlessEntityStates
     scared,
     searching,
     running, 
-    standing
+    standing,
+    dead
 }
 public abstract class HarmlessEntity : Entity
 {
@@ -18,6 +19,7 @@ public abstract class HarmlessEntity : Entity
     public float runSpeed;
     public float normalSpeed;
 
+    public GameObject headGO;
     //Switches the currentstate and acts accordingly to what method it should call
     public virtual void ActOnState(HarmlessEntityStates _state) { }
 }

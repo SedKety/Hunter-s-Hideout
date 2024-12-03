@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: deer rig|deer/run
-      takeName: deer rig|deer/run
+      name: deer rig|deer/walk (1)
+      takeName: deer rig|deer/walk
       internalID: -419402120856283988
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 130
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -35,6 +35,8 @@ public class Deer : HarmlessEntity
     public float standStillChance;
     private Coroutine coroutine;
 
+    public Animator animator;
+
     public override void Start()
     {
         ActOnState(startState);
@@ -43,6 +45,7 @@ public class Deer : HarmlessEntity
     //Switches the currentstate and acts accordingly to what method it should call
     public override void ActOnState(HarmlessEntityStates _state)
     {
+        if (isDead) return;
         currentState = _state;
         //print("Deer is entering: " + _state + "  state");
         switch (_state)
@@ -61,7 +64,7 @@ public class Deer : HarmlessEntity
                     {
                         StopCoroutine(coroutine);
                     }
-                    coroutine =  StartCoroutine(RunAway()); break;
+                    coroutine = StartCoroutine(RunAway()); break;
                 }
             case HarmlessEntityStates.standing:
                 {
@@ -78,6 +81,16 @@ public class Deer : HarmlessEntity
                         StopCoroutine(coroutine);
                     }
                     StartCoroutine(Search()); break;
+                }
+            case HarmlessEntityStates.dead:
+                {
+                    if (coroutine != null)
+                    {
+                        StopCoroutine(coroutine);
+                    }
+                    agent.destination = transform.position;
+                    isDead = true;
+                    break;
                 }
         }
     }
@@ -105,6 +118,9 @@ public class Deer : HarmlessEntity
     public IEnumerator Search()
     {
         GetPosToMoveTo();
+        ChangeSpeed(normalSpeed);
+        //switches to the movementAnimation
+        animator.SetFloat("WalkSpeed", 1);
         while (currentState == HarmlessEntityStates.searching)
         {
             yield return new WaitForSeconds(0.1f);
@@ -121,18 +137,20 @@ public class Deer : HarmlessEntity
     }
     public IEnumerator StandStill()
     {
+        //doesnt animate anymore
+        animator.SetFloat("WalkSpeed", 0f);
         yield return new WaitForSeconds(Random.Range(standStillTime.x, standStillTime.y));
         ActOnState(HarmlessEntityStates.searching);
     }
     public IEnumerator RunAway()
     {
         ChangeSpeed(runSpeed);
+        animator.SetFloat("WalkSpeed", 2);
         isRunning = true;
         GetPosToMoveTo();
         float timeTillEnd = scaredTime;
         while (timeTillEnd > 0)
         {
-            print(timeTillEnd.ToString());
             timeTillEnd -= Time.deltaTime * scaredTimeMultiplier;
             if (Vector3.Distance(transform.position, currentDestination) <= distanceOffsetTillNextPosition)
             {
@@ -145,14 +163,26 @@ public class Deer : HarmlessEntity
         isRunning = false;
         yield return null;
     }
-    public override void OnDeath()
+    [ContextMenu("OnDeath")]
+    protected override void OnDeath()
     {
-
+        print("Dead");
+        EntityManager.CallOnEntityDeath(this);
+        ActOnState(HarmlessEntityStates.dead);
     }
-    
+
+    public void DestroyGameobject()
+    {
+        Destroy(gameObject);
+    }
     public override void TakeDamage(int damageTaken)
     {
-        base.TakeDamage(damageTaken);
+        _health -= damageTaken;
+        if (_health <= 0)
+        {
+            OnDeath();
+            return;
+        }
         ActOnState(HarmlessEntityStates.scared);
     }
 
