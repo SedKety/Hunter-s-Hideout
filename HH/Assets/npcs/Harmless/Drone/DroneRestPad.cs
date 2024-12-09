@@ -6,6 +6,7 @@ public class DroneRestPad : MonoBehaviour
 {
     [Header("Drone Waypoints")]
     public Transform[] droneWaypoints;
+    public Transform[] dronePackageWaypoints;
     public Transform restPoint;
 
 
@@ -16,7 +17,7 @@ public class DroneRestPad : MonoBehaviour
     public void Start()
     {
         DroneManager.restPads.Add(this);
-       drone = Instantiate(droneGO, restPoint.position, Quaternion.identity).GetComponent<Drone>();
+        drone = Instantiate(droneGO, restPoint.position, Quaternion.identity).GetComponent<Drone>();
         drone.droneRestPad = this;
     }
 }

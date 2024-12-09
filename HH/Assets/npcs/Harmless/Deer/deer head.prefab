@@ -121,8 +121,8 @@ MonoBehaviour:
   velocityClamp: {x: 3, y: 3, z: 3}
   minRequiredVelocityXYZ: 0.065
   objectSize: 0
-  headWeight: 0
-  baseMoneyValue: 0
+  headWeight: 5
+  baseMoneyValue: 10
   valueBasedOnWeightMultiplier: 1
 --- !u!135 &1293214419478737624
 SphereCollider:

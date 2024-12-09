@@ -60,7 +60,7 @@ MonoBehaviour:
   scaredTimeMultiplier: 1
   distanceOffsetTillNextPosition: 1
   distanceRange: 40
-  standStillTime: {x: 3, y: 10}
+  standStillTime: {x: 6, y: 12}
   standStillChance: 15
   animator: {fileID: 7324394481592097478}
 --- !u!195 &8448584418903463327

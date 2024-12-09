@@ -167,8 +167,12 @@ public class Deer : HarmlessEntity
     protected override void OnDeath()
     {
         print("Dead");
-        EntityManager.CallOnEntityDeath(this);
-        ActOnState(HarmlessEntityStates.dead);
+        if (!isDead)
+        {
+            EntityManager.CallOnEntityDeath(this);
+            ActOnState(HarmlessEntityStates.dead);
+            animator.SetFloat("WalkSpeed", 3f);
+        }
     }
 
     public void DestroyGameobject()

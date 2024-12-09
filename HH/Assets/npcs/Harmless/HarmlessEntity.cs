@@ -11,6 +11,7 @@ public enum HarmlessEntityStates
     standing,
     dead
 }
+
 public abstract class HarmlessEntity : Entity
 {
     public HarmlessEntityStates currentState;

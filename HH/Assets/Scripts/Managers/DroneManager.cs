@@ -7,6 +7,7 @@ public class DroneManager : MonoBehaviour
 {
     public static List<DroneRestPad> restPads = new List<DroneRestPad>();
 
+    public Queue<GameObject> boughtItems = new Queue<GameObject>();
     public Queue<Entity> retrievableItems = new Queue<Entity>();
 
     Coroutine coroutine;
@@ -14,6 +15,29 @@ public class DroneManager : MonoBehaviour
     {
         EntityManager.OnEntityDeathAction += OnEntityDeath;
     }
+
+    public void StartPackageCoroutine(GameObject package)
+    {
+        StartCoroutine(GetPackage(package));
+    }
+    private IEnumerator GetPackage(GameObject package)
+    {
+        boughtItems.Enqueue(package);
+        while (boughtItems.Count > 0)
+        {
+            if (TryGetValidDronePad(out DroneRestPad restPad))
+            {
+                print("Found a restpad");
+                StartCoroutine(restPad.drone.RetrievePackage(package));
+                boughtItems.Dequeue();
+            }
+            print(boughtItems.Count);
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
+    }
+
 
     public void OnEntityDeath(Entity entity)
     {
@@ -37,6 +61,7 @@ public class DroneManager : MonoBehaviour
                 restPad.drone.ActOnStateRetrieve(retrievableItems.Peek());
                 retrievableItems.Dequeue();
             }
+            yield return new WaitForEndOfFrame();
         }
         yield return null;
     }

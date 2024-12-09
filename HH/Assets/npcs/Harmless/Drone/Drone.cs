@@ -18,7 +18,6 @@ public class Drone : Entity
 
     [SerializeField] Transform heldItemSpawnPoint;
     [SerializeField] GameObject currentHeldItemGO;
-    [SerializeField] GameObject packageGO;
 
     public DroneStates state;
 
@@ -29,7 +28,8 @@ public class Drone : Entity
     public float interactionRange;
 
 
-    public float movementSpeed;
+    public float headRetrievementSpeed;
+    public float packageRetrievementSpeed;
 
     public override void Start()
     {
@@ -57,26 +57,61 @@ public class Drone : Entity
         ActOnState(DroneStates.active);
         StartCoroutine(FlyToLastWaypointThenTarget(entity));
     }
-
-    private IEnumerator FlyToLastWaypointThenTarget(Entity entity)
+    public IEnumerator RetrievePackage(GameObject package)
     {
-        // Get the waypoints in the original order
-        Transform[] waypoints = droneRestPad.droneWaypoints.ToArray();
-
-        // Disable NavMeshAgent during waypoint traversal
+        ActOnState(DroneStates.active);
         agent.enabled = false;
-
-        // Follow all the waypoints in order (using direct movement instead of NavMeshAgent)
+        Transform[] waypoints = droneRestPad.dronePackageWaypoints;
         foreach (Transform waypoint in waypoints)
         {
             while (Vector3.Distance(transform.position, waypoint.position) > 0.1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * movementSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * packageRetrievementSpeed);
                 yield return null;
             }
         }
 
-        // Now, enable NavMeshAgent to move to the entity's position
+        var heldItem = Instantiate(package, heldItemSpawnPoint.position, heldItemSpawnPoint.rotation);
+
+        heldItem.transform.SetParent(heldItemSpawnPoint);
+        heldItem.GetComponent<Rigidbody>().isKinematic = true;
+        //The drone flies back to his assigned restpad
+
+        waypoints.Reverse();
+
+        foreach (Transform waypoint in waypoints)
+        {
+            if(waypoint == waypoints.Last()) { break; }
+            while (Vector3.Distance(transform.position, waypoint.position) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * packageRetrievementSpeed);
+                yield return null;
+            }
+            transform.rotation = waypoint.rotation;
+            transform.position = waypoint.position;
+        }
+        ActOnState(DroneStates.resting);
+        heldItem.transform.SetParent(null);
+        heldItem.GetComponent<Rigidbody>().isKinematic = false;
+        yield return null;
+    }
+    private IEnumerator FlyToLastWaypointThenTarget(Entity entity)
+    {
+        Transform[] waypoints = droneRestPad.droneWaypoints;
+
+        agent.enabled = false;
+
+        // Follow all the waypoints in order
+        foreach (Transform waypoint in waypoints)
+        {
+            while (Vector3.Distance(transform.position, waypoint.position) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * headRetrievementSpeed);
+                yield return null;
+            }
+        }
+
+
         agent.enabled = true;
         agent.SetDestination(entity.transform.position);
 
@@ -88,10 +123,11 @@ public class Drone : Entity
 
         // Retrieve the HarmlessEntity component from the target
         HarmlessEntity harmlessEntity = entity.GetComponent<HarmlessEntity>();
+        GameObject entityHeadInstance = null;
         if (harmlessEntity != null && harmlessEntity.headGO != null)
         {
             // Instantiate the EntityHead at the heldItemSpawnPoint
-            GameObject entityHeadInstance = Instantiate(harmlessEntity.headGO, heldItemSpawnPoint.position, heldItemSpawnPoint.rotation);
+            entityHeadInstance = Instantiate(harmlessEntity.headGO, heldItemSpawnPoint.position, heldItemSpawnPoint.rotation);
 
             // Optionally, parent the instantiated object to the heldItemSpawnPoint
             entityHeadInstance.transform.SetParent(heldItemSpawnPoint);
@@ -126,13 +162,19 @@ public class Drone : Entity
         {
             while (Vector3.Distance(transform.position, waypoint.position) > 0.1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * movementSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * headRetrievementSpeed);
                 yield return null;
             }
+            transform.rotation = waypoint.rotation;
         }
 
         // Return to the initial state
         ActOnState(DroneStates.resting);
+        if (entityHeadInstance != null)
+        {
+            entityHeadInstance.transform.SetParent(null);
+            entityHeadInstance.GetComponent<Rigidbody>().isKinematic = false;
+        }
         Debug.Log("Drone has completed the waypoint path in reverse.");
     }
 
