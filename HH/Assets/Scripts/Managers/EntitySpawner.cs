@@ -41,7 +41,7 @@ public class EntitySpawner : MonoBehaviour
     public void Start()
     {
 
-        SpawnRandomEntity();
+        Invoke(nameof(SpawnRandomEntity), 2f);
     }
     public void SpawnRandomEntity()
     {
@@ -79,13 +79,13 @@ public class EntitySpawner : MonoBehaviour
         int weight = Random.Range(0, 100);
         for (int i = 0; i < time.entities.Length; i++)
         {
-            if(weight <= time.entities[i].weight)
+            if (weight <= time.entities[i].weight)
             {
                 stats = time.entities[i];
                 return true;
             }
         }
-        //to be discarded
+        //this happens if no valid entity is found 
         stats = new EntityInformation();
         return false;
     }

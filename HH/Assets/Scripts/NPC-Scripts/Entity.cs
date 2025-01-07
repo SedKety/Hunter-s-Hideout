@@ -114,60 +114,6 @@ public abstract class Entity : MonoBehaviour, IDamagable
         _startState = npcStats.startState;
         _headGo = npcStats.headGO;
     }
-    //This method is called upon being hit
-    [ContextMenu("TakeDamage")]
-    public virtual void TakeDamage(int damageTaken)
-    {
-        if (shouldDebugPrint) { print(gameObject.name + " Has taken " + damageTaken + ": Damage");  } 
-        _health -= damageTaken;
-        if (_health <= 0)
-        {
-            OnDeath();
-        }
-    }
-
-
-    [ContextMenu("OnDeath")]
-    protected virtual void OnDeath()
-    {
-        if (shouldDebugPrint) { print(gameObject.name + " Has died"); }
-        if (!isDead)
-        {
-            EntityManager.CallOnEntityDeath(this);
-            ActOnState(EntityStates.dead);
-            animator.SetFloat("WalkSpeed", 3f);
-        }
-    }
-
-
-    protected virtual IEnumerator StandStill()
-    {
-        //doesnt animate anymore
-        animator.SetFloat("WalkSpeed", 0f);
-        yield return new WaitForSeconds(Random.Range(_standStillTime.x, _standStillTime.y));
-        if (_currentState != EntityStates.standing) { yield return null; }
-        ActOnState(EntityStates.searching);
-    }
-    protected virtual IEnumerator Search()
-    {
-        GetRandomPosToMoveTo();
-        ChangeSpeed(_movementSpeedNormal);
-        //switches to the movementAnimation
-        animator.SetFloat("WalkSpeed", 1);
-        while (_currentState == EntityStates.searching)
-        {
-            yield return new WaitForSeconds(0.1f);
-            if (Vector3.Distance(transform.position, currentDestination) <= _distanceOffsetTillNextPosition)
-            {
-                if (Random.Range(0, 100) <= standStillChance)
-                {
-                    ActOnState(EntityStates.standing);
-                    break;
-                }
-                GetRandomPosToMoveTo();
-            }
-        }
-    }
     //Makes the entity respond to certain states
     protected virtual void ActOnState(EntityStates _state)
     {
@@ -231,6 +177,59 @@ public abstract class Entity : MonoBehaviour, IDamagable
         }
     }
 
+    [ContextMenu("TakeDamage")]
+    public virtual void TakeDamage(int damageTaken)
+    {
+        if (shouldDebugPrint) { print(gameObject.name + " Has taken " + damageTaken + ": Damage");  } 
+        _health -= damageTaken;
+        if (_health <= 0)
+        {
+            OnDeath();
+        }
+    }
+
+
+    [ContextMenu("OnDeath")]
+    protected virtual void OnDeath()
+    {
+        if (shouldDebugPrint) { print(gameObject.name + " Has died"); }
+        if (!isDead)
+        {
+            EntityManager.CallOnEntityDeath(this);
+            ActOnState(EntityStates.dead);
+            animator.SetFloat("WalkSpeed", 3f);
+        }
+    }
+
+
+    protected virtual IEnumerator StandStill()
+    {
+        //doesnt animate anymore
+        animator.SetFloat("WalkSpeed", 0f);
+        yield return new WaitForSeconds(Random.Range(_standStillTime.x, _standStillTime.y));
+        if (_currentState != EntityStates.standing) { yield return null; }
+        ActOnState(EntityStates.searching);
+    }
+    protected virtual IEnumerator Search()
+    {
+        GetRandomPosToMoveTo();
+        ChangeSpeed(_movementSpeedNormal);
+        //switches to the movementAnimation
+        animator.SetFloat("WalkSpeed", 1);
+        while (_currentState == EntityStates.searching)
+        {
+            yield return new WaitForSeconds(0.1f);
+            if (Vector3.Distance(transform.position, currentDestination) <= _distanceOffsetTillNextPosition)
+            {
+                if (Random.Range(0, 100) <= standStillChance)
+                {
+                    ActOnState(EntityStates.standing);
+                    break;
+                }
+                GetRandomPosToMoveTo();
+            }
+        }
+    }
     //Tries to generate a position to move to, will return positive if it has found one
     public virtual bool GetRandomPosToMoveTo()
     {

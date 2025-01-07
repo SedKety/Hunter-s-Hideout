@@ -20,17 +20,16 @@ MonoBehaviour:
   hitCount: 1
   hitDelay: 0
   contactWithdrawalChance: 50
-  attackChance: 100
   movementSpeedNormal: 3.5
   movementSpeedSprint: 10.5
   distanceRange: 15
   distanceOffsetTillNextPosition: 1
-  startState: 3
   standStillTime: {x: 3, y: 10}
   standStillChance: 15
   scaredTime: 15
   scaredTimeMultiplier: 1
+  startState: 0
   headGO: {fileID: 9131946455206934149, guid: 5daea8c10d6b96e4497ea719df8da3b3, type: 3}
   enemyWeightAmounts:
     min: 0
-    max: 0
+    max: 25
