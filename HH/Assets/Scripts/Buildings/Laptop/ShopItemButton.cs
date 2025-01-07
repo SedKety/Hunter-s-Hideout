@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class ShopItemButton : MonoBehaviour
 {
     public ShopItem shopItem;
-    [SerializeField] private Image itemSprite;
     [SerializeField] private TextMeshProUGUI itemName, itemCost;
 
     private bool canBeBought = true;
@@ -21,7 +20,6 @@ public class ShopItemButton : MonoBehaviour
     public void Init()
     {
         if(shopItem == null) { Destroy(gameObject); return; }
-        itemSprite.sprite = shopItem.shopItemSprite;
         itemName.text = shopItem.shopItemName;
         itemCost.text = shopItem.shopItemCost.ToString();
     }

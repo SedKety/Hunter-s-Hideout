@@ -4,7 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/ShopItem")]
 public class ShopItem : ScriptableObject
 {
-    public Sprite shopItemSprite;
     public string shopItemName;
     public int shopItemCost;
 }

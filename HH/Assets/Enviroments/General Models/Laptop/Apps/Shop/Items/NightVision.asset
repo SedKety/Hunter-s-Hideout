@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4befc79587f1c4f498b52d4c6985e141, type: 3}
   m_Name: NightVision
   m_EditorClassIdentifier: 
-  shopItemSprite: {fileID: 21300000, guid: 0a69481c304284452906b703e34b1e93, type: 3}
-  shopItemName: Night vision goggles
+  shopItemName: Night vision
   shopItemCost: 300
