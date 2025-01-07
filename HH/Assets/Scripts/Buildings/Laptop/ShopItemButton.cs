@@ -5,13 +5,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ShopItemButton : MonoBehaviour
+public class ShopItemButton : MonoBehaviour, IOnHoverImpulsable
 {
     public ShopItem shopItem;
     [SerializeField] private TextMeshProUGUI itemName, itemCost;
 
     private bool canBeBought = true;
    public UnityEvent onBought;
+
+    public GameObject objectToBuy;
     public void Start()
     {
         Init();
@@ -23,21 +25,25 @@ public class ShopItemButton : MonoBehaviour
         itemName.text = shopItem.shopItemName;
         itemCost.text = shopItem.shopItemCost.ToString();
     }
-    [ContextMenu("OnBuyButtonClicked")]
-    public void OnBuyButtonClicked()
+    [ContextMenu("OnClicked")]
+    public void OnClicked()
     {
         print("Trying to buy");
-        if (!canBeBought) { return; }
+        if (!canBeBought || onBought == null ) { return; }
         print("cant be bought ");
         if (MoneyManager.money >= shopItem.shopItemCost)
         {
-            MoneyManager.money -= shopItem.shopItemCost;
+            GameManager.Instance.moneyManager.AddMoney(-shopItem.shopItemCost);
             onBought.Invoke();
-            canBeBought = false;
         }
         else
         {
             print("Not enough money");
         }
+    }
+
+    public void SendGetPackageRequest()
+    {
+        DroneManager.Instance.StartPackageCoroutine(objectToBuy);
     }
 }

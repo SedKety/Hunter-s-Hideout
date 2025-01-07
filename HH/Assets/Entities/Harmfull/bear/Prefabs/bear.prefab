@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcStats: {fileID: 11400000, guid: a1ae55b40acaf7f428efc700f7c058d6, type: 2}
   _headGo: {fileID: 0}
-  shouldDebugPrint: 1
+  shouldDebugPrint: 0
 --- !u!195 &8239478195025704732
 NavMeshAgent:
   m_ObjectHideFlags: 0

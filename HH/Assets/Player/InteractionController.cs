@@ -30,8 +30,9 @@ public class InteractionController : MonoBehaviour
     private Collider[] hitObjectsInSphere;
     private RaycastHit rayHit;
 
-
-
+    private bool facingInteractable;
+    private IOnHoverImpulsable currentHoveringImpulsable;
+    public LayerMask interactableLayerMask;
     [BurstCompile]
     public void OnClick(InputAction.CallbackContext ctx)
     {
@@ -43,6 +44,11 @@ public class InteractionController : MonoBehaviour
         if (ctx.canceled && isHoldingObject)
         {
             Drop();
+        }
+
+        if (facingInteractable && !isHoldingObject)
+        {
+            InteractWithInteractable();
         }
     }
 
@@ -79,6 +85,7 @@ public class InteractionController : MonoBehaviour
         //if you are holding nothing, scan for objects by using a raycast and a sphere around you hand
         if (isHoldingObject == false)
         {
+            facingInteractable = CheckForInteractable();
             UpdateToPickObject();
         }
 
@@ -89,7 +96,38 @@ public class InteractionController : MonoBehaviour
         }
     }
 
+    private bool CheckForInteractable()
+    {
+        // Use rayTransform.forward for the direction of the ray
+        Ray ray = new Ray(rayTransform.position, rayTransform.forward);
+        Debug.DrawRay(rayTransform.position, rayTransform.forward * settings.interactRayCastRange, Color.red, 10);
 
+        if (Physics.Raycast(ray, out RaycastHit hit, settings.interactRayCastRange, interactableLayerMask))
+        {
+            print(hit.transform.name);
+            if (hit.transform.gameObject.GetComponent<IOnHoverImpulsable>() != null)
+            {
+                currentHoveringImpulsable = hit.transform.gameObject.GetComponent<IOnHoverImpulsable>();
+                hand.SendVibration(settings.selectPickupVibrationParams);
+                return true;
+            }
+        }
+
+        if (Physics.Raycast(ray, out RaycastHit hirt, settings.interactRayCastRange))
+        {
+            print(hirt.transform.name);
+        }
+
+        return false;
+    }
+
+    private void InteractWithInteractable()
+    {
+        if (currentHoveringImpulsable != null)
+        {
+            currentHoveringImpulsable.OnClicked();
+        }
+    }
 
 
     [BurstCompile]
@@ -151,11 +189,11 @@ public class InteractionController : MonoBehaviour
 
 
         //if "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
-        if (settings.grabState.HasFlag(GrabState.OnRaycast) && Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.interactRayCastRange, interactablesLayer, QueryTriggerInteraction.Collide))
+        if (settings.grabState.HasFlag(GrabState.OnRaycast) && Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.pickupRayCastRange, interactablesLayer, QueryTriggerInteraction.Collide))
         {
             if (rayHit.transform.TryGetComponent(out Holdable new_ToPickupObject))
             {
-                //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
+                //if you are holding nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
                 if (objectSelected == false || new_ToPickupObject != toPickupObject)
                 {
                     SelectNewObject(new_ToPickupObject);

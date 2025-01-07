@@ -21,9 +21,10 @@ public class InteractionSettingsSO : ScriptableObject
 
     [Header("What layer should the interactables be on?")]
     public LayerMask interactablesLayer;
-
+     
     [Header("Raycast forward pickup range")]
-    public float interactRayCastRange = 0.65f;
+    public float pickupRayCastRange = 0.65f;
+    public float interactRayCastRange = 1.5f;
 
     [Header("Distance to hand pickup range")]
     public float overlapSphereSize = .2f;

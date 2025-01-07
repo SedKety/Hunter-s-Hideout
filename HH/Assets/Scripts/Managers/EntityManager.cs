@@ -11,5 +11,6 @@ public class EntityManager : MonoBehaviour
     public static void CallOnEntityDeath(Entity entityHead)
     {
         OnEntityDeathAction?.Invoke(entityHead);
+        EntitySpawner.currentEntityCount--;
     }
 }

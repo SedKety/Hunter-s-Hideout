@@ -18,6 +18,9 @@ public class Drone : Entity
     [SerializeField] Transform heldItemSpawnPoint;
     [SerializeField] GameObject currentHeldItemGO;
 
+    [SerializeField] private Transform[] propellors;
+    [SerializeField] private bool shouldRotatePropellors;
+    [SerializeField] private float propellorRotationSpeed;
     public DroneStates state;
 
     public float floatingHeight;
@@ -34,6 +37,8 @@ public class Drone : Entity
     {
         base.Awake();
         state = DroneStates.resting;
+        agent.speed = headRetrievementSpeed;
+        agent.enabled = false;
     }
 
     public void ActOnState(DroneStates newState)
@@ -43,6 +48,7 @@ public class Drone : Entity
         {
             case DroneStates.resting:
                 {
+                    shouldRotatePropellors = false;
                     break;
                 }
             case DroneStates.active:
@@ -58,6 +64,8 @@ public class Drone : Entity
     }
     public IEnumerator RetrievePackage(GameObject package)
     {
+        shouldRotatePropellors = true;
+        StartCoroutine(RotatePropellors());
         ActOnState(DroneStates.active);
         agent.enabled = false;
         Transform[] waypoints = droneRestPad.dronePackageWaypoints;
@@ -73,7 +81,10 @@ public class Drone : Entity
         var heldItem = Instantiate(package, heldItemSpawnPoint.position, heldItemSpawnPoint.rotation);
 
         heldItem.transform.SetParent(heldItemSpawnPoint);
-        heldItem.GetComponent<Rigidbody>().isKinematic = true;
+        if (heldItem.GetComponent<Rigidbody>() != null)
+        {
+            heldItem.GetComponent<Rigidbody>().isKinematic = true;
+        }
         //The drone flies back to his assigned restpad
 
         waypoints.Reverse();
@@ -86,16 +97,31 @@ public class Drone : Entity
                 transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * packageRetrievementSpeed);
                 yield return null;
             }
+            if (waypoint == waypoints[waypoints.Length - 3])
+            {
+                print("At the waypoint");
+                if (heldItem != null)
+                {
+                    heldItem.transform.SetParent(null);
+                    heldItem.GetComponent<Rigidbody>().isKinematic = false;
+                }
+                yield return new WaitForSeconds(1);
+            }
             transform.rotation = waypoint.rotation;
             transform.position = waypoint.position;
         }
+        while (Vector3.Distance(transform.position, droneRestPad.restPoint.position) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, droneRestPad.restPoint.position, Time.deltaTime * packageRetrievementSpeed);
+            yield return null;
+        }
         ActOnState(DroneStates.resting);
-        heldItem.transform.SetParent(null);
-        heldItem.GetComponent<Rigidbody>().isKinematic = false;
         yield return null;
     }
     private IEnumerator FlyToLastWaypointThenTarget(Entity entity)
     {
+        shouldRotatePropellors = true;
+        StartCoroutine(RotatePropellors());
         Transform[] waypoints = droneRestPad.droneWaypoints;
 
         agent.enabled = false;
@@ -164,27 +190,32 @@ public class Drone : Entity
                 transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * headRetrievementSpeed);
                 yield return null;
             }
+            if (waypoint == waypoints[waypoints.Length - 2])
+            {
+                if (entityHeadInstance != null)
+                {
+                    entityHeadInstance.transform.SetParent(null);
+                    entityHeadInstance.GetComponent<Rigidbody>().isKinematic = false;
+                }
+            }
             transform.rotation = waypoint.rotation;
         }
 
         // Return to the initial state
         ActOnState(DroneStates.resting);
-        if (entityHeadInstance != null)
-        {
-            entityHeadInstance.transform.SetParent(null);
-            entityHeadInstance.GetComponent<Rigidbody>().isKinematic = false;
-        }
         Debug.Log("Drone has completed the waypoint path in reverse.");
     }
 
-
-
-
-    protected override void OnDeath()
+    protected IEnumerator RotatePropellors()
     {
-        if (canDropPackage)
+        while (shouldRotatePropellors)
         {
-
+            foreach (Transform propellor in propellors)
+            {
+                propellor.Rotate(0, propellorRotationSpeed, 0);
+            }
+            yield return new WaitForSeconds(0.01f);
         }
+        yield return null;
     }
 }

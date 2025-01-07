@@ -17,8 +17,8 @@ MonoBehaviour:
   healthRegen: 0
   healthRegenTimer: 0
   damage: 10
-  hitCount: 5
-  hitDelay: 3
+  hitCount: 2
+  hitDelay: 1
   contactWithdrawalChance: 0
   movementSpeedNormal: 2.5
   movementSpeedSprint: 5
@@ -28,7 +28,7 @@ MonoBehaviour:
   standStillChance: 1
   scaredTime: 0
   scaredTimeMultiplier: 1
-  startState: 1
+  startState: 0
   headGO: {fileID: 5988775186546865370, guid: 2c4359d9175a9444ca7c51834b19d140, type: 3}
   enemyWeightAmounts:
     min: 0

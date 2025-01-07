@@ -16,6 +16,20 @@ MonoBehaviour:
   canHeal: 0
   healthRegen: 0
   healthRegenTimer: 0
-  weightAmount:
+  damage: 0
+  hitCount: 0
+  hitDelay: 0
+  contactWithdrawalChance: 0
+  movementSpeedNormal: 0
+  movementSpeedSprint: 0
+  distanceRange: 10
+  distanceOffsetTillNextPosition: 1
+  standStillTime: {x: 0, y: 0}
+  standStillChance: 0
+  scaredTime: 0
+  scaredTimeMultiplier: 1
+  startState: 6
+  headGO: {fileID: 0}
+  enemyWeightAmounts:
     min: 0
     max: 0

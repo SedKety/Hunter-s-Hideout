@@ -43,7 +43,7 @@ public class MoneyManager : MonoBehaviour
         {
             for(int i = 0; i < coinsToAdd; i++)
             {
-                droppedCoins.Add(Instantiate(coinGO, coinSpawnPos.position, Quaternion.identity));
+                droppedCoins.Add(Instantiate(coinGO, coinSpawnPos.position, Quaternion.identity, coinSpawnPos));
                 yield return new WaitForSeconds(coinGenerationCooldown);
             }
         }

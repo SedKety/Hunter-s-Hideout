@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 474376627553869641, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474376627553869641, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 474376627553869641, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 942810691211101373, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_StartingGroupMembers.Array.data[0]
       value: 
@@ -23,6 +35,18 @@ PrefabInstance:
     - target: {fileID: 942810691211101373, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_StartingInteractionOverridesMap.Array.data[0].overrideGroupMembers.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206351151079817397, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206351151079817397, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206351151079817397, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1712044668748454791, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_FacingExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -521,6 +545,9 @@ MonoBehaviour:
   heldItemHolder: {fileID: 5433533519339193228}
   isHoldingObject: 0
   objectSelected: 0
+  interactableLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   frameAmount: 12
 --- !u!4 &6618629026776142889 stripped
 Transform:
@@ -564,6 +591,9 @@ MonoBehaviour:
   heldItemHolder: {fileID: 6723675300275919984}
   isHoldingObject: 0
   objectSelected: 0
+  interactableLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   frameAmount: 12
 --- !u!4 &6723675300275919984 stripped
 Transform:

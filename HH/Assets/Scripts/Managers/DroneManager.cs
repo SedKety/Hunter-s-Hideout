@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DroneManager : MonoBehaviour
 {
+    public static DroneManager Instance;
     public static List<DroneRestPad> restPads = new List<DroneRestPad>();
 
     public Queue<GameObject> boughtItems = new Queue<GameObject>();
@@ -14,6 +15,15 @@ public class DroneManager : MonoBehaviour
     void Start()
     {
         EntityManager.OnEntityDeathAction += OnEntityDeath;
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void StartPackageCoroutine(GameObject package)
@@ -61,6 +71,7 @@ public class DroneManager : MonoBehaviour
                 restPad.drone.ActOnStateRetrieve(retrievableItems.Peek());
                 retrievableItems.Dequeue();
             }
+            print("Still searching");
             yield return new WaitForEndOfFrame();
         }
         yield return null;

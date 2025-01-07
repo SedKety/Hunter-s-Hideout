@@ -22,6 +22,8 @@ public struct TimeDependendSpawnVariables
     [Tooltip("This will multiply the time calculated from the min and max time till next spawn")]
     public float spawnTimeMultiplier;
 
+    public float numberOfSpawns;
+
     [Header("Make sure the weight adds up to 100")]
     [Tooltip("Make sure the weight values are sorted from low to high")]
     public EntityInformation[] entities;
@@ -30,35 +32,61 @@ public struct TimeDependendSpawnVariables
 
 public class EntitySpawner : MonoBehaviour
 {
-    [Header("These are the variables connected to different timestamps")]
-    public TimeDependendSpawnVariables[] timeStampVariables;
-
-
     public TimeDependendSpawnVariables currentTimeVariables;
 
     public Transform[] spawnTransforms;
 
+    public LayerMask groundMask;
+
+    [SerializeField] int maxTries = 50;
+
+    [SerializeField] int maxEntities;
+    public static int currentEntityCount;
     public void Start()
     {
-
-        Invoke(nameof(SpawnRandomEntity), 2f);
+        SpawnRandomEntity();
     }
     public void SpawnRandomEntity()
     {
-        if (TryGetRandomEnemy(currentTimeVariables, out EntityInformation stats))
+        for(int i = 0; i < currentTimeVariables.numberOfSpawns; i++)
         {
-            Ray ray = new Ray(GetRandomSpawnPoint(), Vector3.down);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if(currentEntityCount >= maxEntities) { return; }
+            if (TryGetRandomEnemy(currentTimeVariables, out EntityInformation stats))
             {
-                Instantiate(stats.entity, hit.point, Quaternion.identity);
-                StartCoroutine(SpawnCooldown(currentTimeVariables));
+                int currentTry = 0;
+
+                while (currentTry < maxTries)
+                {
+                    // Get a random spawn point and raise it above ground
+                    Vector3 spawnPoint = GetRandomSpawnPoint();
+                    spawnPoint.y += 10f; // Ensure it's above the ground
+
+                    // Cast the ray downward
+                    Ray ray = new Ray(spawnPoint, Vector3.down);
+
+                    // Raycast with a layer mask to detect the ground
+                    if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundMask))
+                    {
+                        currentEntityCount++;
+                        // Instantiate entity at the hit point
+                        Instantiate(stats.entity, hit.point, Quaternion.identity);
+                        StartCoroutine(SpawnCooldown(currentTimeVariables));
+                        break;  
+                    }
+
+                    currentTry++;
+                    print($"Attempt {currentTry}: Could not find valid ground.");
+                }
+
+                print("Failed to spawn after maximum attempts.");
+            }
+            else
+            {
+                print("Could not spawn an enemy - no valid stats found.");
             }
         }
-        else
-        {
-            print("Couldnt spawn an enemy");
-        }
     }
+
 
     public Vector3 GetRandomSpawnPoint()
     {

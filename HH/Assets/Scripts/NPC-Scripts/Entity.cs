@@ -10,6 +10,7 @@ public enum EntityStates
     attacking,
     fleeing,
     dead,
+    nothing,
 }
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -56,7 +57,7 @@ public abstract class Entity : MonoBehaviour, IDamagable
 
     protected bool isDead;
 
-    protected EntityStates _currentState;
+    [SerializeField] protected EntityStates _currentState;
 
 
     protected Coroutine coroutine;
@@ -174,6 +175,8 @@ public abstract class Entity : MonoBehaviour, IDamagable
                     StartCoroutine(Attack());
                     break;
                 }
+            case EntityStates.nothing:
+                break;
         }
     }
 
