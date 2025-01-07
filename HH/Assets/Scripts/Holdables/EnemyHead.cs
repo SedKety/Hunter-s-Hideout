@@ -18,7 +18,7 @@ public class EnemyHead : Holdable, ISellable
     public void OnSell()
     {
         var moneyValue = baseMoneyValue + (valueBasedOnWeightMultiplier * headWeight);
-        GameManager.Instance.MoneyManager.AddMoney(moneyValue);
+        GameManager.Instance.moneyManager.AddMoney(moneyValue);
         Destroy(gameObject);
     }
     public override void OnItemUse()

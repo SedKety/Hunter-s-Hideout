@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public MoneyManager MoneyManager;
+    public MoneyManager moneyManager;
     public Transform player;
 
     public void Awake()

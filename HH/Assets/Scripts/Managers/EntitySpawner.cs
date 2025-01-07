@@ -47,8 +47,12 @@ public class EntitySpawner : MonoBehaviour
     {
         if (TryGetRandomEnemy(currentTimeVariables, out EntityInformation stats))
         {
-            Instantiate(stats.entity, GetRandomSpawnPoint(), Quaternion.identity);
-            StartCoroutine(SpawnCooldown(currentTimeVariables));
+            Ray ray = new Ray(GetRandomSpawnPoint(), Vector3.down);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Instantiate(stats.entity, hit.point, Quaternion.identity);
+                StartCoroutine(SpawnCooldown(currentTimeVariables));
+            }
         }
         else
         {
@@ -58,7 +62,9 @@ public class EntitySpawner : MonoBehaviour
 
     public Vector3 GetRandomSpawnPoint()
     {
-        return spawnTransforms[Random.Range(0, spawnTransforms.Length)].position;
+        var randomTransform = spawnTransforms[Random.Range(0, spawnTransforms.Length)].position;
+        randomTransform.y += 100;
+        return randomTransform;
     }
     public IEnumerator SpawnCooldown(TimeDependendSpawnVariables time)
     {
