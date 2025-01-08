@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c78a8f284cee94d43a6a75d31548bb6d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 62fbad920777ce34ca0a8e9f965809c6, type: 2}
     - target: {fileID: 919132149155446097, guid: c78a8f284cee94d43a6a75d31548bb6d, type: 3}
       propertyPath: m_Name
       value: Mag Small
