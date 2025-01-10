@@ -1,6 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public struct Attachable
+{
+    public GameObject attachableGO;
+    public Transform attachableTransform;
+}
 public class Gun : Holdable
 {
 
@@ -8,12 +14,13 @@ public class Gun : Holdable
     public GunStats gunStatsSO;
     public Transform shootPoint;
 
-
     private int _currentAmmo;
 
     private bool _isReloading;
     private bool _onCooldown;
 
+    //[SerializedDictionary("Attachable", "AttachPoint")]
+     public List<Attachable> attachables;
     //These are the variables taken from the GunStats Scriptable Object
     #region private gunstats variables
     private int _maxAmmo;
@@ -90,6 +97,20 @@ public class Gun : Holdable
     {
         yield return new WaitForSeconds(_cooldownTime);
         _onCooldown = false;
+    }
+
+
+    public void TryToAttachAttachable(GameObject attemptedObject)
+    {
+        foreach (var attachable in attachables)
+        {
+            if(attachable.attachableGO == attemptedObject)
+            {
+                attemptedObject.transform.parent = transform;
+                attemptedObject.transform.position = attachable.attachableTransform.position;
+                return;
+            }
+        }
     }
     #endregion
 }

@@ -39,7 +39,7 @@ public abstract class Holdable : MonoBehaviour, IUsable
     }
 
 
-    public  virtual void OnItemUse()
+    public virtual void OnItemUse()
     {
 
     }
@@ -71,6 +71,11 @@ public abstract class Holdable : MonoBehaviour, IUsable
 
         transform.SetParent(hand.heldItemHolder, false, false);
         rb.isKinematic = true;
+    }
+
+    public virtual IEnumerator WhileHeld()
+    {
+        yield return null;
     }
 
 

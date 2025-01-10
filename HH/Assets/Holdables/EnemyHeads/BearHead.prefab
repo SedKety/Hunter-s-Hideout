@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6102559475061463541}
   - component: {fileID: 7425625934673820218}
   - component: {fileID: 8784132312272069331}
+  - component: {fileID: 4921937859982859607}
   m_Layer: 0
   m_Name: BearHead
   m_TagString: Untagged
@@ -83,6 +84,27 @@ MonoBehaviour:
   headWeight: 0
   baseMoneyValue: 0
   valueBasedOnWeightMultiplier: 1
+--- !u!65 &4921937859982859607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057694375778160083}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7012352, y: 0.67307687, z: 0.81846786}
+  m_Center: {x: 0, y: -0.27658546, z: -0.0011155605}
 --- !u!1001 &6769859884372466890
 PrefabInstance:
   m_ObjectHideFlags: 0

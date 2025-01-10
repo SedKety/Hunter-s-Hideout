@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ebedcb7320b90b947b78dc42e7b7cc2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.99233
+      value: -12.324
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebedcb7320b90b947b78dc42e7b7cc2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.455409
+      value: 16.888508
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebedcb7320b90b947b78dc42e7b7cc2f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -51.5918
+      value: -29.649
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebedcb7320b90b947b78dc42e7b7cc2f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,7 +68,7 @@ PrefabInstance:
       addedObject: {fileID: 731242516464252687}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ebedcb7320b90b947b78dc42e7b7cc2f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1293214419478737624}
+      addedObject: {fileID: 2602932810043180804}
   m_SourcePrefab: {fileID: 100100000, guid: ebedcb7320b90b947b78dc42e7b7cc2f, type: 3}
 --- !u!1 &9131946455206934149 stripped
 GameObject:
@@ -124,8 +124,8 @@ MonoBehaviour:
   headWeight: 5
   baseMoneyValue: 50
   valueBasedOnWeightMultiplier: 1
---- !u!135 &1293214419478737624
-SphereCollider:
+--- !u!65 &2602932810043180804
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,5 +143,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: 0, y: -0.1, z: 0}
+  m_Size: {x: 0.47418952, y: 0.64724416, z: 0.44576854}
+  m_Center: {x: 0, y: 0.012111872, z: 0.046715528}
