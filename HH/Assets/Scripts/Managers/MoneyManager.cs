@@ -16,6 +16,8 @@ public class MoneyManager : MonoBehaviour
     public Transform coinSpawnPos;
     public List<GameObject> droppedCoins;
 
+    public AudioSource coinFall;
+
     public void AddMoney(float moneyToAdd)
     {
         money += moneyToAdd * moneyMultiplier;
@@ -44,6 +46,7 @@ public class MoneyManager : MonoBehaviour
             for(int i = 0; i < coinsToAdd; i++)
             {
                 droppedCoins.Add(Instantiate(coinGO, coinSpawnPos.position, Quaternion.identity, coinSpawnPos));
+                coinFall.Play();
                 yield return new WaitForSeconds(coinGenerationCooldown);
             }
         }

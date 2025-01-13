@@ -33,6 +33,8 @@ public class Drone : Entity
     public float headRetrievementSpeed;
     public float packageRetrievementSpeed;
 
+    public AudioSource droneFly;
+
     protected override void Awake()
     {
         base.Awake();
@@ -218,6 +220,7 @@ public class Drone : Entity
 
     protected IEnumerator RotatePropellors()
     {
+        droneFly.Play();
         while (shouldRotatePropellors)
         {
             foreach (Transform propellor in propellors)
