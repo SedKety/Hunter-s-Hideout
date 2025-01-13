@@ -25,7 +25,7 @@ public abstract class Holdable : MonoBehaviour, IUsable
     public float objectSize;
 
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
 
     [BurstCompile]
@@ -71,6 +71,7 @@ public abstract class Holdable : MonoBehaviour, IUsable
 
         transform.SetParent(hand.heldItemHolder, false, false);
         rb.isKinematic = true;
+        StartCoroutine(WhileHeld());
     }
 
     public virtual IEnumerator WhileHeld()

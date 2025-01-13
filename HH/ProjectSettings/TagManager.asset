@@ -15,7 +15,7 @@ TagManager:
   - Holdable
   - Gun
   - Interactable
-  - 
+  - NavmeshIgnore
   - 
   - 
   - 

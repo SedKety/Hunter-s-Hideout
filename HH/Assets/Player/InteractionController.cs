@@ -20,7 +20,8 @@ public class InteractionController : MonoBehaviour
     public Transform heldItemHolder;
 
 
-    private Holdable heldObject;
+    public Holdable heldObject;
+
     public bool isHoldingObject;
 
     private Holdable toPickupObject;
@@ -33,6 +34,10 @@ public class InteractionController : MonoBehaviour
     private bool facingInteractable;
     private IOnHoverImpulsable currentHoveringImpulsable;
     public LayerMask interactableLayerMask;
+
+    [SerializeField]
+    private float lerpSpeed = 10f; 
+
     [BurstCompile]
     public void OnClick(InputAction.CallbackContext ctx)
     {
@@ -51,6 +56,7 @@ public class InteractionController : MonoBehaviour
             InteractWithInteractable();
         }
     }
+
 
     public void OnActivateClick(InputAction.CallbackContext ctx)
     {
@@ -95,16 +101,20 @@ public class InteractionController : MonoBehaviour
             CalculateHandVelocity();
         }
     }
-
+    public void StopHoldingObject()
+    {
+        heldObject = null;
+        isHoldingObject = false;
+    }
     private bool CheckForInteractable()
     {
         // Use rayTransform.forward for the direction of the ray
         Ray ray = new Ray(rayTransform.position, rayTransform.forward);
-        Debug.DrawRay(rayTransform.position, rayTransform.forward * settings.interactRayCastRange, Color.red, 10);
+        //Debug.DrawRay(rayTransform.position, rayTransform.forward * settings.interactRayCastRange, Color.red, 10);
 
         if (Physics.Raycast(ray, out RaycastHit hit, settings.interactRayCastRange, interactableLayerMask))
         {
-            print(hit.transform.name);
+            //print(hit.transform.name);
             if (hit.transform.gameObject.GetComponent<IOnHoverImpulsable>() != null)
             {
                 currentHoveringImpulsable = hit.transform.gameObject.GetComponent<IOnHoverImpulsable>();
@@ -113,10 +123,10 @@ public class InteractionController : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(ray, out RaycastHit hirt, settings.interactRayCastRange))
-        {
-            print(hirt.transform.name);
-        }
+        //if (Physics.Raycast(ray, out RaycastHit hirt, settings.interactRayCastRange))
+        //{
+        //    print(hirt.transform.name);
+        //}
 
         return false;
     }

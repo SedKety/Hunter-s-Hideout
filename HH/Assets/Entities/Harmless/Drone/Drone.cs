@@ -190,17 +190,27 @@ public class Drone : Entity
                 transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * headRetrievementSpeed);
                 yield return null;
             }
-            if (waypoint == waypoints[waypoints.Length - 2])
-            {
-                if (entityHeadInstance != null)
-                {
-                    entityHeadInstance.transform.SetParent(null);
-                    entityHeadInstance.GetComponent<Rigidbody>().isKinematic = false;
-                }
-            }
-            transform.rotation = waypoint.rotation;
+        }
+        //Go to the dropPoint
+        while (Vector3.Distance(transform.position, droneRestPad.packageDropoffPoint.position) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, droneRestPad.packageDropoffPoint.position, Time.deltaTime * headRetrievementSpeed);
+            yield return null;
+        }
+        //Drop the head
+        if (entityHeadInstance != null)
+        {
+            entityHeadInstance.transform.SetParent(null);
+            entityHeadInstance.GetComponent<Rigidbody>().isKinematic = false;
         }
 
+        //Go to the RestPoint
+        while (Vector3.Distance(transform.position, droneRestPad.restPoint.position) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, droneRestPad.restPoint.position, Time.deltaTime * headRetrievementSpeed);
+            yield return null;
+        }
+        transform.rotation = droneRestPad.restPoint.rotation;
         // Return to the initial state
         ActOnState(DroneStates.resting);
         Debug.Log("Drone has completed the waypoint path in reverse.");

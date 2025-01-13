@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 [System.Serializable]
 public struct Attachable
 {
-    public GameObject attachableGO;
+    public string name;
+    public GameObject attachable;
     public Transform attachableTransform;
 }
-public class Gun : Holdable
+public class Gun : Holdable, IAttachable
 {
-
     #region variables
     public GunStats gunStatsSO;
     public Transform shootPoint;
@@ -19,8 +20,8 @@ public class Gun : Holdable
     private bool _isReloading;
     private bool _onCooldown;
 
-    //[SerializedDictionary("Attachable", "AttachPoint")]
-     public List<Attachable> attachables;
+
+    public List<Attachable> attachables;
     //These are the variables taken from the GunStats Scriptable Object
     #region private gunstats variables
     private int _maxAmmo;
@@ -59,7 +60,7 @@ public class Gun : Holdable
         _cooldownTime = gunStatsSO.cooldownTime;
         _bulletDamage = gunStatsSO.bulletDamage;
         _bulletObject = gunStatsSO.bulletObject;
-        _bulletSpeed = gunStatsSO.bulletSpeed;  
+        _bulletSpeed = gunStatsSO.bulletSpeed;
         //_reloadTime = gunStatsSO.reloadTime;
     }
 
@@ -99,18 +100,30 @@ public class Gun : Holdable
         _onCooldown = false;
     }
 
-
-    public void TryToAttachAttachable(GameObject attemptedObject)
+    public bool CanAttach(Attachables attemptedAttachable)
     {
-        foreach (var attachable in attachables)
-        {
-            if(attachable.attachableGO == attemptedObject)
-            {
-                attemptedObject.transform.parent = transform;
-                attemptedObject.transform.position = attachable.attachableTransform.position;
-                return;
-            }
-        }
+        bool canAttach = attachables.Where(a => a.attachable.GetComponent<Attachables>().GetType() == attemptedAttachable.GetType() && a.attachableTransform.childCount == 0).Any();
+        print(canAttach);
+
+        return canAttach;
     }
+
+    public void OnAttach(Attachables objectToAttach)
+    {
+        var attachableStruct = attachables.Where(a => a.attachable.GetComponent<Attachables>().GetType() == objectToAttach.GetType() && a.attachableTransform.childCount == 0).FirstOrDefault();
+        if (attachableStruct.attachableTransform != null)
+        {
+            GameObject attachableGameObject = objectToAttach.gameObject;
+            attachableGameObject.transform.position = attachableStruct.attachableTransform.position;
+            attachableGameObject.transform.rotation = attachableStruct.attachableTransform.rotation;
+            attachableGameObject.transform.parent = attachableStruct.attachableTransform;
+            objectToAttach.OnAttach();
+        }
+        else
+        {
+            Debug.LogWarning("Attachable could not be found or has already been attached.");
+        }
+    } 
+
     #endregion
 }

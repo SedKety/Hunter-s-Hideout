@@ -71,7 +71,7 @@ public class DroneManager : MonoBehaviour
                 restPad.drone.ActOnStateRetrieve(retrievableItems.Peek());
                 retrievableItems.Dequeue();
             }
-            print("Still searching");
+            //print("Still searching");
             yield return new WaitForEndOfFrame();
         }
         yield return null;
@@ -83,7 +83,7 @@ public class DroneManager : MonoBehaviour
     {
         for(int i = 0; i < restPads.Count; i++)
         {
-            print("Attempted restpad");
+            //print("Attempted restpad");
             if(restPads[i].drone.state == DroneStates.resting)
             {
                 restPad = restPads[i];

@@ -58,7 +58,7 @@ public class EntityStats : ScriptableObject
     [Header("Miscelaneous")]
     public GameObject headGO;
 
-    [SerializeField] public MinMax enemyWeightAmounts;
+    public MinMax enemyWeightAmounts;
 
 
 
