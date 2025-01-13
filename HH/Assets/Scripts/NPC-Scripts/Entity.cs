@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 public enum EntityStates
@@ -200,7 +201,10 @@ public abstract class Entity : MonoBehaviour, IDamagable
         {
             EntityManager.CallOnEntityDeath(this);
             ActOnState(EntityStates.dead);
-            animator.SetFloat("WalkSpeed", 3f);
+            animator.SetBool("IsDead", true);
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunnning", false);
+            animator.SetBool("IsIdle", false);
         }
     }
 
@@ -208,7 +212,9 @@ public abstract class Entity : MonoBehaviour, IDamagable
     protected virtual IEnumerator StandStill()
     {
         //doesnt animate anymore
-        animator.SetFloat("WalkSpeed", 0f);
+        animator.SetBool("IsIdle", true);
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsRunnning", false);
         yield return new WaitForSeconds(Random.Range(_standStillTime.x, _standStillTime.y));
         if (_currentState != EntityStates.standing) { yield return null; }
         ActOnState(EntityStates.searching);
@@ -218,7 +224,9 @@ public abstract class Entity : MonoBehaviour, IDamagable
         GetRandomPosToMoveTo();
         ChangeSpeed(_movementSpeedNormal);
         //switches to the movementAnimation
-        animator.SetFloat("WalkSpeed", 1);
+        animator.SetBool("IsWalking", true);
+        animator.SetBool("IsIdle", false);
+        animator.SetBool("IsRunnning", false);
         while (_currentState == EntityStates.searching)
         {
             yield return new WaitForSeconds(0.1f);
@@ -256,7 +264,9 @@ public abstract class Entity : MonoBehaviour, IDamagable
     protected virtual IEnumerator RunAway()
     {
         ChangeSpeed(_movementSpeedSprint);
-        animator.SetFloat("WalkSpeed", 2);
+        animator.SetBool("IsRunning", true);
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsIdle", false);
         GetRandomPosToMoveTo();
         float timeTillEnd = _scaredTime;
         while (timeTillEnd > 0)

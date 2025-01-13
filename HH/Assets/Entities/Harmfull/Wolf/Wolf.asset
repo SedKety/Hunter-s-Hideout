@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e4f1f3a8aeeb047bdb078cc86e6bdc, type: 3}
+  m_Name: Wolf
+  m_EditorClassIdentifier: 
+  health: 200
+  canHeal: 0
+  healthRegen: 0
+  healthRegenTimer: 0
+  damage: 5
+  hitCount: 5
+  hitDelay: 3
+  contactWithdrawalChance: 0
+  movementSpeedNormal: 2.5
+  movementSpeedSprint: 5
+  distanceRange: 10
+  distanceOffsetTillNextPosition: 1
+  standStillTime: {x: 5, y: 10}
+  standStillChance: 1
+  scaredTime: 0
+  scaredTimeMultiplier: 1
+  startState: 0
+  headGO: {fileID: 2188564479394383305, guid: ec56b06db618ea046a4ebb6edc4e4618, type: 3}
+  enemyWeightAmounts:
+    min: 0
+    max: 0

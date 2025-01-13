@@ -12523,6 +12523,7 @@ MonoBehaviour:
   coinGO: {fileID: 5041714330219828628, guid: 5e1e233bd90bf62479f09884d30f751b, type: 3}
   coinSpawnPos: {fileID: 1011121365}
   droppedCoins: []
+  coinFall: {fileID: 0}
 --- !u!1 &932726716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7499910662332232039, guid: 000779f40a371a8499a23ce3a47bbf1b, type: 3}
@@ -22833,23 +22834,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTimeVariables:
     startHour: 0
-    minTimeTillNextSpawn: 60
-    maxTimeTillNextSpawn: 120
+    minTimeTillNextSpawn: 10
+    maxTimeTillNextSpawn: 50
     spawnTimeMultiplier: 1
     numberOfSpawns: 2
     entities:
     - entityName: Deer
-      weight: 25
+      weight: 16
       entity: {fileID: 2320610550768150888, guid: ea02fa0b29a84d54d999b52bfe861bae, type: 3}
     - entityName: Bear
-      weight: 50
+      weight: 33
       entity: {fileID: 5328843127652070713, guid: 9306861d89f6eee48bb314ca158b14f3, type: 3}
     - entityName: Bear infected
-      weight: 75
+      weight: 49
       entity: {fileID: 2991445655529480343, guid: a0771f67486e4ca428cd3ffc1ddcee9c, type: 3}
     - entityName: Deer infected
-      weight: 100
+      weight: 63
       entity: {fileID: 7434695569444037226, guid: 5255e49fe5d53474c9d0ce1f0170c352, type: 3}
+    - entityName: Wolf
+      weight: 79
+      entity: {fileID: 5813595668483805726, guid: 0634f6695384c73499092c510becee72, type: 3}
+    - entityName: Wolf Infected
+      weight: 100
+      entity: {fileID: 5344830088409329284, guid: 1a535baae2160fb41bbdcbfd9cd4be74, type: 3}
   spawnTransforms:
   - {fileID: 1819735074}
   - {fileID: 1821571114}
@@ -22864,7 +22871,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxTries: 50
-  maxEntities: 10
+  maxEntities: 20
 --- !u!1 &1704616859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1615415993526744195, guid: 89b0580ef5ec43049a806bc6f1e68782, type: 3}
