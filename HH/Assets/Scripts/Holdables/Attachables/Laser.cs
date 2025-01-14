@@ -6,7 +6,7 @@ public class Laser : Attachables
 {
     public GameObject laserBeam;
 
-    public override void OnAttach()
+    public override void OnAttach(Holdable holdable = null)
     {
         base.OnAttach();
         laserBeam.SetActive(true);

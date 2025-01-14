@@ -63,6 +63,24 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""leftTriggerHeld"",
+                    ""type"": ""Value"",
+                    ""id"": ""c9161147-997c-4773-b994-0d31ee7db199"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""rightTriggerHeld"",
+                    ""type"": ""Value"",
+                    ""id"": ""f0520cf0-cdc7-433c-add4-2a86b911870c"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -109,6 +127,28 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
                     ""action"": ""GrabRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6c8133c-c1dd-4bed-b8b9-8669120096fd"",
+                    ""path"": ""<XRController>{LeftHand}/{Trigger}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""leftTriggerHeld"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d868322a-7f46-4f77-b1b2-4d7ee9c0f7c3"",
+                    ""path"": ""<XRController>{RightHand}/{Trigger}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""rightTriggerHeld"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -121,6 +161,8 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
         m_Gameplay_rightsectrigger = m_Gameplay.FindAction("rightsectrigger", throwIfNotFound: true);
         m_Gameplay_GrabLeft = m_Gameplay.FindAction("GrabLeft", throwIfNotFound: true);
         m_Gameplay_GrabRight = m_Gameplay.FindAction("GrabRight", throwIfNotFound: true);
+        m_Gameplay_leftTriggerHeld = m_Gameplay.FindAction("leftTriggerHeld", throwIfNotFound: true);
+        m_Gameplay_rightTriggerHeld = m_Gameplay.FindAction("rightTriggerHeld", throwIfNotFound: true);
     }
 
     ~@ControllerControls()
@@ -191,6 +233,8 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_rightsectrigger;
     private readonly InputAction m_Gameplay_GrabLeft;
     private readonly InputAction m_Gameplay_GrabRight;
+    private readonly InputAction m_Gameplay_leftTriggerHeld;
+    private readonly InputAction m_Gameplay_rightTriggerHeld;
     public struct GameplayActions
     {
         private @ControllerControls m_Wrapper;
@@ -199,6 +243,8 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
         public InputAction @rightsectrigger => m_Wrapper.m_Gameplay_rightsectrigger;
         public InputAction @GrabLeft => m_Wrapper.m_Gameplay_GrabLeft;
         public InputAction @GrabRight => m_Wrapper.m_Gameplay_GrabRight;
+        public InputAction @leftTriggerHeld => m_Wrapper.m_Gameplay_leftTriggerHeld;
+        public InputAction @rightTriggerHeld => m_Wrapper.m_Gameplay_rightTriggerHeld;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -220,6 +266,12 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
             @GrabRight.started += instance.OnGrabRight;
             @GrabRight.performed += instance.OnGrabRight;
             @GrabRight.canceled += instance.OnGrabRight;
+            @leftTriggerHeld.started += instance.OnLeftTriggerHeld;
+            @leftTriggerHeld.performed += instance.OnLeftTriggerHeld;
+            @leftTriggerHeld.canceled += instance.OnLeftTriggerHeld;
+            @rightTriggerHeld.started += instance.OnRightTriggerHeld;
+            @rightTriggerHeld.performed += instance.OnRightTriggerHeld;
+            @rightTriggerHeld.canceled += instance.OnRightTriggerHeld;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -236,6 +288,12 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
             @GrabRight.started -= instance.OnGrabRight;
             @GrabRight.performed -= instance.OnGrabRight;
             @GrabRight.canceled -= instance.OnGrabRight;
+            @leftTriggerHeld.started -= instance.OnLeftTriggerHeld;
+            @leftTriggerHeld.performed -= instance.OnLeftTriggerHeld;
+            @leftTriggerHeld.canceled -= instance.OnLeftTriggerHeld;
+            @rightTriggerHeld.started -= instance.OnRightTriggerHeld;
+            @rightTriggerHeld.performed -= instance.OnRightTriggerHeld;
+            @rightTriggerHeld.canceled -= instance.OnRightTriggerHeld;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -259,5 +317,7 @@ public partial class @ControllerControls: IInputActionCollection2, IDisposable
         void OnRightsectrigger(InputAction.CallbackContext context);
         void OnGrabLeft(InputAction.CallbackContext context);
         void OnGrabRight(InputAction.CallbackContext context);
+        void OnLeftTriggerHeld(InputAction.CallbackContext context);
+        void OnRightTriggerHeld(InputAction.CallbackContext context);
     }
 }

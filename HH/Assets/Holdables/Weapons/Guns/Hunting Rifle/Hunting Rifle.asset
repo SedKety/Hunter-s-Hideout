@@ -15,5 +15,5 @@ MonoBehaviour:
   maxAmmo: 1
   cooldownTime: 1
   bulletDamage: 25
-  bulletObject: {fileID: 4273572417231037752, guid: 5a24e4c39258ed544b767481b7e93098, type: 3}
+  bulletObject: {fileID: 6713618052451281952, guid: 7e626c82a6a95fb4ea1c9783b64d71bd, type: 3}
   bulletSpeed: 100

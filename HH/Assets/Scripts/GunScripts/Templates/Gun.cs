@@ -14,12 +14,9 @@ public class Gun : Holdable, IAttachable
     #region variables
     public GunStats gunStatsSO;
     public Transform shootPoint;
+    public Magazine magazine;
 
-    private int _currentAmmo;
-
-    private bool _isReloading;
-    private bool _onCooldown;
-
+    [SerializeField] private AudioSource _audioSource;
 
     public List<Attachable> attachables;
     //These are the variables taken from the GunStats Scriptable Object
@@ -67,7 +64,7 @@ public class Gun : Holdable, IAttachable
     //Checks whether there is enough ammo in the gun to continue shooting, otherwise returns false
     public bool CanShoot()
     {
-        if (_currentAmmo >= 0)
+        if (magazine.currentAmmo >= 0)
         {
             return true;
         }
@@ -90,15 +87,13 @@ public class Gun : Holdable, IAttachable
         GameObject bullet = Instantiate(_bulletObject, shootPoint.position, shootPoint.rotation);
         bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, _bulletSpeed), ForceMode.Impulse);
         bullet.GetComponent<Bullet>().damage = _bulletDamage;
-        StartCoroutine(StartCooldownTimer());
+        if (_audioSource)
+        {
+            _audioSource.Play();
+        }
     }
 
-    //Starts the cooldown for in between shots 
-    public IEnumerator StartCooldownTimer()
-    {
-        yield return new WaitForSeconds(_cooldownTime);
-        _onCooldown = false;
-    }
+
 
     public bool CanAttach(Attachables attemptedAttachable)
     {
@@ -117,7 +112,7 @@ public class Gun : Holdable, IAttachable
             attachableGameObject.transform.position = attachableStruct.attachableTransform.position;
             attachableGameObject.transform.rotation = attachableStruct.attachableTransform.rotation;
             attachableGameObject.transform.parent = attachableStruct.attachableTransform;
-            objectToAttach.OnAttach();
+            objectToAttach.OnAttach(this);
         }
         else
         {

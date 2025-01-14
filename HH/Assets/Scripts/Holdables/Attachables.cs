@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Attachables : Holdable
 {
+    [Header("Attachable Variables")]
     public float attachRange = 0.25f;
     private bool attached;
+
+    public Holdable attachedItem { private set; get { return attachedItem; } }
+
     public override IEnumerator WhileHeld()
     {
         while (heldByPlayer)
@@ -66,7 +70,7 @@ public class Attachables : Holdable
         }
     }
 
-    public virtual void OnAttach()
+    public virtual void OnAttach(Holdable holdable = null)
     {
         var heldObject = Hand.Left.interactionController.heldObject;
         if (heldObject != null)
@@ -82,11 +86,16 @@ public class Attachables : Holdable
             rb.isKinematic = true;
             attached = true;
         }
+        if (holdable != null)
+        {
+            attachedItem = holdable;
+        }
 
     }
     protected virtual void OnDeAttach()
     {
         attached = false;
+        attachedItem = null;
     }
 
 }
