@@ -9069,31 +9069,31 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: dae335f45dfaf3c4eaa052472d9f1452, type: 2}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 174110534925463427}
+      objectReference: {fileID: 0}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SendGetPackageRequest
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ShopItemButton, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2904188203438641518, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: onBought.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3326800658438014429, guid: b4253b79ad0991142b3e9588de3edc0e, type: 3}
       propertyPath: m_AnchoredPosition.x
