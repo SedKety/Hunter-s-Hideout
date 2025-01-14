@@ -186,9 +186,9 @@ public abstract class Entity : MonoBehaviour, IDamagable
     [ContextMenu("TakeDamage")]
     public virtual void TakeDamage(int damageTaken)
     {
-        hit.Play();
         if (shouldDebugPrint) { print(gameObject.name + " Has taken " + damageTaken + ": Damage");  } 
         _health -= damageTaken;
+        hit.Play();
         if (_health <= 0)
         {
             OnDeath();
