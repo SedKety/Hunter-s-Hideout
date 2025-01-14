@@ -163,6 +163,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 942810691211101373, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_StartingInteractionOverridesMap.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942810691211101373, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_StartingInteractionOverridesMap.Array.data[0].groupMember
       value: 
       objectReference: {fileID: 0}
@@ -759,6 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: e5cbee312fd6b5d46af3aaf1151bc336, type: 2}
+  handGO: {fileID: 3452046133820116424}
   rayTransform: {fileID: 5433533519339193228}
   overlapSphereTransform: {fileID: 6618629025123603656}
   heldItemHolder: {fileID: 5433533519339193228}
@@ -807,6 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: e5cbee312fd6b5d46af3aaf1151bc336, type: 2}
+  handGO: {fileID: 5911437308128620075}
   rayTransform: {fileID: 6723675300275919984}
   overlapSphereTransform: {fileID: 6618629026776142889}
   heldItemHolder: {fileID: 6723675300275919984}

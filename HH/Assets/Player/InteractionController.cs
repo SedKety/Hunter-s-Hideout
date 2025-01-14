@@ -10,6 +10,7 @@ public class InteractionController : MonoBehaviour
     private Hand hand;
     public InteractionSettingsSO settings;
 
+    public GameObject handGO;
 
     [SerializeField]
     private Transform rayTransform;
@@ -105,6 +106,7 @@ public class InteractionController : MonoBehaviour
     {
         heldObject = null;
         isHoldingObject = false;
+        handGO.SetActive(true);
     }
     private bool CheckForInteractable()
     {
@@ -269,6 +271,8 @@ public class InteractionController : MonoBehaviour
         heldObject = toPickupObject;
         isHoldingObject = true;
 
+        handGO.SetActive(false);
+
         hand.SendVibration(settings.pickupVibrationParams);
     }
 
@@ -298,6 +302,7 @@ public class InteractionController : MonoBehaviour
             heldObject.Drop();
         }
 
+        handGO.SetActive(true);
         heldObject = null;
         isHoldingObject = false;
     }

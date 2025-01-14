@@ -64,7 +64,7 @@ public class Gun : Holdable, IAttachable
     //Checks whether there is enough ammo in the gun to continue shooting, otherwise returns false
     public bool CanShoot()
     {
-        if (magazine.currentAmmo >= 0)
+        if (magazine != null && magazine.currentAmmo >= 0)
         {
             return true;
         }
@@ -81,12 +81,12 @@ public class Gun : Holdable, IAttachable
         yield break;
     }
 
-    //Shoots the right bullet according to the _bulletType variable, 
     public void Shoot()
     {
         GameObject bullet = Instantiate(_bulletObject, shootPoint.position, shootPoint.rotation);
         bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, _bulletSpeed), ForceMode.Impulse);
         bullet.GetComponent<Bullet>().damage = _bulletDamage;
+        magazine.currentAmmo--;
         if (_audioSource)
         {
             _audioSource.Play();
@@ -94,7 +94,7 @@ public class Gun : Holdable, IAttachable
     }
 
 
-
+    
     public bool CanAttach(Attachables attemptedAttachable)
     {
         bool canAttach = attachables.Where(a => a.attachable.GetComponent<Attachables>().GetType() == attemptedAttachable.GetType() && a.attachableTransform.childCount == 0).Any();
