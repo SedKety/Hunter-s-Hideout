@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
     public static float money = 0;
     public static float moneyMultiplier = 1;
-
+    public TMP_Text moneyText;
     [Tooltip("This will be used to calculate how many coin gameobjects will be generated")]
     public float moneyPerCoin;
 
@@ -18,6 +19,10 @@ public class MoneyManager : MonoBehaviour
 
     public AudioSource coinFall;
 
+    public void Update()
+    {
+        moneyText.text = money.ToString();
+    }
     public void AddMoney(float moneyToAdd)
     {
         money += moneyToAdd * moneyMultiplier;

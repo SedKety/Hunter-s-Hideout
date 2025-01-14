@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
 
 public class Hideout : MonoBehaviour, IDamagable
 {
@@ -13,6 +14,7 @@ public class Hideout : MonoBehaviour, IDamagable
     public Transform[] hideOutHitPositionWrapper;
 
     [SerializeField]private int health;
+    public TMP_Text healthText;
 
     void Awake()
     {
@@ -26,7 +28,10 @@ public class Hideout : MonoBehaviour, IDamagable
             Destroy(gameObject);
         }
     }
-
+    public void Update()
+    {
+        healthText.text = health.ToString();
+    }
     public void TakeDamage(int damageTaken)
     {
         health -= damageTaken;
