@@ -8,7 +8,7 @@ public class Attachables : Holdable
     public float attachRange = 0.25f;
     private bool attached;
 
-    public Holdable attachedItem { private set; get { return attachedItem; } }
+    public Holdable attachedItem;
 
     public override IEnumerator WhileHeld()
     {

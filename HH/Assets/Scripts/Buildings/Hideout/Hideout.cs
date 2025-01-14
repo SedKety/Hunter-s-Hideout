@@ -30,7 +30,12 @@ public class Hideout : MonoBehaviour, IDamagable
     }
     public void Update()
     {
-        healthText.text = health.ToString();
+        if (healthText)
+        {
+
+
+            healthText.text = health.ToString();
+        }
     }
     public void TakeDamage(int damageTaken)
     {

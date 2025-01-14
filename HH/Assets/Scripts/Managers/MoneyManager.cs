@@ -21,7 +21,8 @@ public class MoneyManager : MonoBehaviour
 
     public void Update()
     {
-        moneyText.text = money.ToString();
+        if (moneyText) { moneyText.text = money.ToString(); }
+        
     }
     public void AddMoney(float moneyToAdd)
     {
