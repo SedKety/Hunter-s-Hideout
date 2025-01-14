@@ -71,6 +71,8 @@ public abstract class Entity : MonoBehaviour, IDamagable
 
 
     [SerializeField] bool shouldDebugPrint;
+
+    public AudioSource hit;
     //Take the stats from the npcStats scriptable object and applies those to this object
     protected virtual void Awake()
     {
@@ -184,6 +186,7 @@ public abstract class Entity : MonoBehaviour, IDamagable
     [ContextMenu("TakeDamage")]
     public virtual void TakeDamage(int damageTaken)
     {
+        hit.Play();
         if (shouldDebugPrint) { print(gameObject.name + " Has taken " + damageTaken + ": Damage");  } 
         _health -= damageTaken;
         if (_health <= 0)

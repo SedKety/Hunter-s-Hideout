@@ -159,6 +159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c9c8e465663e5c4a9ce37f411eb726f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6697378096062617167}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c9c8e465663e5c4a9ce37f411eb726f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4094458926368783073}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c9c8e465663e5c4a9ce37f411eb726f, type: 3}
       insertIndex: 1
@@ -200,6 +203,7 @@ MonoBehaviour:
   gunStatsSO: {fileID: 11400000, guid: ceec4359f52388c47aad4214e6ebf96b, type: 2}
   shootPoint: {fileID: 6156557271403278842}
   magazine: {fileID: 0}
+  muzzleFlare: {fileID: 4321634919862490525}
   _audioSource: {fileID: 2885457852334111651}
   attachables:
   - name: DrumMag
@@ -243,7 +247,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7337200155294719546, guid: c6c60031db2e02c468ad9cf229b7648f, type: 2}
   m_audioClip: {fileID: 8300000, guid: ffb2ae7a2d0c91c47ab01896ab147638, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -354,4 +358,83 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c9c8e465663e5c4a9ce37f411eb726f, type: 3}
   m_PrefabInstance: {fileID: 4510161072378680209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6468339269147942392
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4115717093738968186}
+    m_Modifications:
+    - target: {fileID: 3720142201057266283, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_Name
+      value: Muzzle flare
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0627
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078990503862470757, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.023574036
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078990503862470757, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078990503862470757, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.7539206
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+--- !u!4 &4094458926368783073 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+  m_PrefabInstance: {fileID: 6468339269147942392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4321634919862490525 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7078990503862470757, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+  m_PrefabInstance: {fileID: 6468339269147942392}
   m_PrefabAsset: {fileID: 0}

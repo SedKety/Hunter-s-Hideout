@@ -15,6 +15,7 @@ public class Gun : Holdable, IAttachable
     public GunStats gunStatsSO;
     public Transform shootPoint;
     public Magazine magazine;
+    public ParticleSystem muzzleFlare;
 
     [SerializeField] private AudioSource _audioSource;
 
@@ -87,6 +88,7 @@ public class Gun : Holdable, IAttachable
         bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, _bulletSpeed), ForceMode.Impulse);
         bullet.GetComponent<Bullet>().damage = _bulletDamage;
         magazine.currentAmmo--;
+        muzzleFlare.Play();
         if (_audioSource)
         {
             _audioSource.Play();

@@ -62,6 +62,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4863842903270800196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &354877304770600636
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4863842903270800196}
+    m_Modifications:
+    - target: {fileID: 3720142201057266283, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_Name
+      value: Muzzle flare
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0644356
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.306
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078990503862470757, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.027876746
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+--- !u!4 &7348361660049242533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6995876894782957337, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+  m_PrefabInstance: {fileID: 354877304770600636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7408816507484182233 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7078990503862470757, guid: 8caa2fd421082af4780b8e762067b044, type: 3}
+  m_PrefabInstance: {fileID: 354877304770600636}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4968998867765812399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,6 +206,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7705125c50a2c54d83eec2528598602, type: 3}
       insertIndex: -1
       addedObject: {fileID: 28515772439829473}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7705125c50a2c54d83eec2528598602, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7348361660049242533}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f7705125c50a2c54d83eec2528598602, type: 3}
       insertIndex: -1
@@ -207,6 +281,8 @@ MonoBehaviour:
   objectSize: 0
   gunStatsSO: {fileID: 11400000, guid: 949b7dfdb942f8246b09f81105d6c42d, type: 2}
   shootPoint: {fileID: 5254084519265947201}
+  magazine: {fileID: 0}
+  muzzleFlare: {fileID: 7408816507484182233}
   _audioSource: {fileID: 1447141300173845854}
   attachables:
   - name: Laser
@@ -245,7 +321,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7337200155294719546, guid: c6c60031db2e02c468ad9cf229b7648f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4cbda38abecff7d40b6a6fcbb9725d46, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
