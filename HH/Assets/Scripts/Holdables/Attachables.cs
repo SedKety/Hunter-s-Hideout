@@ -9,6 +9,13 @@ public class Attachables : Holdable
     private bool attached;
 
     public Holdable attachedItem;
+    public LayerMask excludedLayers;
+
+    public override void Awake()
+    {
+        base.Awake();
+        rb.excludeLayers = excludedLayers;
+    }
 
     public override IEnumerator WhileHeld()
     {

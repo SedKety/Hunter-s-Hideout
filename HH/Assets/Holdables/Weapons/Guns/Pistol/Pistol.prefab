@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 6497603281118306119}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2178, z: -0.1382}
+  m_LocalPosition: {x: 0, y: 0.017, z: -0.0825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -206,6 +206,12 @@ MonoBehaviour:
   muzzleFlare: {fileID: 4321634919862490525}
   _audioSource: {fileID: 2885457852334111651}
   attachables:
+  - name: DrumMag
+    attachable: {fileID: 7162879576718479543, guid: 6a7b3713625cc064e9f8d85e55470aa6, type: 3}
+    attachableTransform: {fileID: 1646224557146353134}
+  - name: DrumMag
+    attachable: {fileID: 7162879576718479543, guid: 6a7b3713625cc064e9f8d85e55470aa6, type: 3}
+    attachableTransform: {fileID: 1646224557146353134}
   - name: DrumMag
     attachable: {fileID: 7162879576718479543, guid: 6a7b3713625cc064e9f8d85e55470aa6, type: 3}
     attachableTransform: {fileID: 1646224557146353134}

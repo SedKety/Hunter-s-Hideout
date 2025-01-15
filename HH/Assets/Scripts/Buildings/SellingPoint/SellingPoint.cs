@@ -11,4 +11,12 @@ public class SellingPoint : MonoBehaviour
             sellable.OnSell();
         }
     }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<ISellable>(out var sellable))
+        {
+            sellable.OnSell();
+        }
+    }
 }

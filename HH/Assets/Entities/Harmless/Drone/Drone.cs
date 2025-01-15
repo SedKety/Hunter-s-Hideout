@@ -15,8 +15,8 @@ public class Drone : Entity
 
     private GameObject currentTarget;
 
-    [SerializeField] Transform heldItemSpawnPoint;
-    [SerializeField] GameObject currentHeldItemGO;
+    [SerializeField]private Transform heldItemSpawnPoint;
+    private GameObject currentHeldItemGO;
 
     [SerializeField] private Transform[] propellors;
     [SerializeField] private bool shouldRotatePropellors;
@@ -73,6 +73,7 @@ public class Drone : Entity
         Transform[] waypoints = droneRestPad.dronePackageWaypoints;
         foreach (Transform waypoint in waypoints)
         {
+            if (waypoint == waypoints.Last()) { break; }
             while (Vector3.Distance(transform.position, waypoint.position) > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * packageRetrievementSpeed);
@@ -93,25 +94,25 @@ public class Drone : Entity
 
         foreach (Transform waypoint in waypoints)
         {
-            if(waypoint == waypoints.Last()) { break; }
             while (Vector3.Distance(transform.position, waypoint.position) > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * packageRetrievementSpeed);
                 yield return null;
             }
-            if (waypoint == waypoints[waypoints.Length - 3])
-            {
-                print("At the waypoint");
-                if (heldItem != null)
-                {
-                    heldItem.transform.SetParent(null);
-                    heldItem.GetComponent<Rigidbody>().isKinematic = false;
-                }
-                yield return new WaitForSeconds(1);
-            }
-            transform.rotation = waypoint.rotation;
-            transform.position = waypoint.position;
         }
+
+        while (Vector3.Distance(transform.position, droneRestPad.packageDropoffPoint.position) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, droneRestPad.packageDropoffPoint.position, Time.deltaTime * headRetrievementSpeed);
+            yield return null;
+        }
+        if (heldItem != null)
+        {
+            heldItem.transform.SetParent(null);
+            heldItem.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+
         while (Vector3.Distance(transform.position, droneRestPad.restPoint.position) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, droneRestPad.restPoint.position, Time.deltaTime * packageRetrievementSpeed);

@@ -41,7 +41,6 @@ public class DroneManager : MonoBehaviour
                 StartCoroutine(restPad.drone.RetrievePackage(package));
                 boughtItems.Dequeue();
             }
-            print(boughtItems.Count);
             yield return new WaitForEndOfFrame();
         }
 

@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         {
             hitEntity.TakeDamage(damage);
         }
-        print(collision.gameObject);
+        print(collision.gameObject); 
         Destroy(gameObject);
     }
 }

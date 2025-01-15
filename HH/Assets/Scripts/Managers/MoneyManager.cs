@@ -65,7 +65,6 @@ public class MoneyManager : MonoBehaviour
             for (int i = 0; i < coinsToAdd; i++)
             {
                 int random = Random.Range(0, droppedCoins.Count);
-                if (droppedCoins[i] != null) ;
                 Destroy(droppedCoins[random]);
                 droppedCoins.RemoveAt(random);
 

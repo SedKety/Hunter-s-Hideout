@@ -22,12 +22,8 @@ public class Gun : Holdable, IAttachable
     public List<Attachable> attachables;
     //These are the variables taken from the GunStats Scriptable Object
     #region private gunstats variables
-    private int _maxAmmo;
-
-    private float _cooldownTime;
 
     private int _bulletDamage;
-    private float _bulletDistance;
     private GameObject _bulletObject;
     private float _bulletSpeed;
 
@@ -54,8 +50,6 @@ public class Gun : Holdable, IAttachable
     //Take the stats from the gunStats scriptable object and applies those to this object
     public void InitStats()
     {
-        _maxAmmo = gunStatsSO.maxAmmo;
-        _cooldownTime = gunStatsSO.cooldownTime;
         _bulletDamage = gunStatsSO.bulletDamage;
         _bulletObject = gunStatsSO.bulletObject;
         _bulletSpeed = gunStatsSO.bulletSpeed;
@@ -100,7 +94,6 @@ public class Gun : Holdable, IAttachable
     public bool CanAttach(Attachables attemptedAttachable)
     {
         bool canAttach = attachables.Where(a => a.attachable.GetComponent<Attachables>().GetType() == attemptedAttachable.GetType() && a.attachableTransform.childCount == 0).Any();
-        print(canAttach);
 
         return canAttach;
     }

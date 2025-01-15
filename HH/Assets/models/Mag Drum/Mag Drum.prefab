@@ -143,7 +143,10 @@ MonoBehaviour:
   velocityClamp: {x: 3, y: 3, z: 3}
   minRequiredVelocityXYZ: 0.065
   objectSize: 0
-  attachedItem: {fileID: 0}
   attachRange: 0.25
+  attachedItem: {fileID: 0}
+  excludedLayers:
+    serializedVersion: 2
+    m_Bits: 192
   maxAmmo: 30
   currentAmmo: 0
