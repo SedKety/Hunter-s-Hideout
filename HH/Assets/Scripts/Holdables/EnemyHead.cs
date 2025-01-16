@@ -25,4 +25,9 @@ public class EnemyHead : Holdable, ISellable
     {
         print("Attempted To Use an Non-Usable item of type:  " + gameObject.name);
     }
+
+    public int ReturnValue()
+    {
+        return (int)(baseMoneyValue + (valueBasedOnWeightMultiplier * headWeight));
+    }
 }

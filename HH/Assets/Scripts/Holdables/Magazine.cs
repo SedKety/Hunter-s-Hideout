@@ -13,6 +13,10 @@ public class Magazine : Attachables
         base.Awake();
         currentAmmo = maxAmmo;
     }
+    public override void Pickup(InteractionController hand)
+    {
+        base.Pickup(hand);
+    }
     public override void OnAttach(Holdable holdable = null)
     {
         base.OnAttach(holdable);
@@ -23,6 +27,7 @@ public class Magazine : Attachables
     }
     protected override void OnDeAttach()
     {
+        base.OnDeAttach();
         if (attachedItem != null && attachedItem.TryGetComponent<Gun>(out Gun attachedGun))
         {
             attachedGun.magazine = null;

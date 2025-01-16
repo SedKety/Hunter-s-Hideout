@@ -25,14 +25,17 @@ public class Attachables : Holdable
             TryToAttach();
         }
     }
-
+    public void DeAttach()
+    {
+        OnDeAttach();
+    }
     public override void Pickup(InteractionController hand)
     {
-        base.Pickup(hand);
-        if(attached)
+        if (attached)
         {
             OnDeAttach();
         }
+        base.Pickup(hand);
     }
     protected virtual void TryToAttach()
     {
@@ -102,7 +105,9 @@ public class Attachables : Holdable
     protected virtual void OnDeAttach()
     {
         attached = false;
+        rb.isKinematic = false;
         attachedItem = null;
+        transform.parent = null;
     }
 
 }

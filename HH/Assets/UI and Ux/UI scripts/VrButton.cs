@@ -10,4 +10,5 @@ public class VrButton : MonoBehaviour, IOnHoverImpulsable
     {
         onClickEvent.Invoke();
     }
+
 }

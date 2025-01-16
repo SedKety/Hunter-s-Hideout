@@ -230,6 +230,7 @@ public class Drone : Entity
             }
             yield return new WaitForSeconds(0.01f);
         }
+        droneFly.Stop();
         yield return null;
     }
 }

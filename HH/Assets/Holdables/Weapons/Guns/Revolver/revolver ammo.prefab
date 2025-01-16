@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5558064367491556407}
   - component: {fileID: 625485294255636673}
   - component: {fileID: 53254846122501923}
+  - component: {fileID: 6753256565106876810}
   m_Layer: 0
   m_Name: revolver ammo
   m_TagString: Untagged
@@ -131,10 +132,32 @@ MonoBehaviour:
   velocityClamp: {x: 3, y: 3, z: 3}
   minRequiredVelocityXYZ: 0.065
   objectSize: 0
+  rb: {fileID: 0}
   attachRange: 0.25
   attachedItem: {fileID: 0}
   excludedLayers:
     serializedVersion: 2
-    m_Bits: 0
-  maxAmmo: 0
+    m_Bits: 192
+  maxAmmo: 6
   currentAmmo: 0
+--- !u!65 &6753256565106876810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655397646611506312}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044443794, y: 0.045129407, z: 0.06499029}
+  m_Center: {x: -0.000583821, y: 0.021395946, z: 0}

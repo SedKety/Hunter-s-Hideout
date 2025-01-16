@@ -5,13 +5,13 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 [RequireComponent(typeof(Rigidbody))]
-public abstract class Holdable : MonoBehaviour, IUsable
+public class Holdable : MonoBehaviour, IUsable
 {
     public bool interactable = true;
     public bool isThrowable = true;
     public bool heldByPlayer;
 
-    private InteractionController connectedHand;
+    protected InteractionController connectedHand;
 
     public float throwVelocityMultiplier = 1;
 
@@ -25,7 +25,7 @@ public abstract class Holdable : MonoBehaviour, IUsable
     public float objectSize;
 
 
-    protected Rigidbody rb;
+    public Rigidbody rb;
 
 
     [BurstCompile]

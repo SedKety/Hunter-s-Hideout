@@ -81,8 +81,9 @@ MonoBehaviour:
   velocityClamp: {x: 3, y: 3, z: 3}
   minRequiredVelocityXYZ: 0.065
   objectSize: 0
+  rb: {fileID: 0}
   headWeight: 0
-  baseMoneyValue: 0
+  baseMoneyValue: 100
   valueBasedOnWeightMultiplier: 1
 --- !u!65 &4921937859982859607
 BoxCollider:

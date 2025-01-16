@@ -48,18 +48,17 @@ public class Gun : Holdable, IAttachable
     }
 
     //Take the stats from the gunStats scriptable object and applies those to this object
-    public void InitStats()
+    protected virtual void InitStats()
     {
         _bulletDamage = gunStatsSO.bulletDamage;
         _bulletObject = gunStatsSO.bulletObject;
         _bulletSpeed = gunStatsSO.bulletSpeed;
-        //_reloadTime = gunStatsSO.reloadTime;
     }
 
     //Checks whether there is enough ammo in the gun to continue shooting, otherwise returns false
-    public bool CanShoot()
+    protected virtual bool CanShoot()
     {
-        if (magazine != null && magazine.currentAmmo >= 0)
+        if (magazine != null && magazine.currentAmmo > 0)
         {
             return true;
         }
@@ -67,7 +66,7 @@ public class Gun : Holdable, IAttachable
     }
 
     //Attempts to shoot, dependend on whether the player can shoot or not
-    public IEnumerator TryToShoot()
+    protected virtual IEnumerator TryToShoot()
     {
         if (CanShoot())
         {
@@ -76,7 +75,7 @@ public class Gun : Holdable, IAttachable
         yield break;
     }
 
-    public void Shoot()
+    protected virtual void Shoot()
     {
         GameObject bullet = Instantiate(_bulletObject, shootPoint.position, shootPoint.rotation);
         bullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, _bulletSpeed), ForceMode.Impulse);
@@ -98,7 +97,7 @@ public class Gun : Holdable, IAttachable
         return canAttach;
     }
 
-    public void OnAttach(Attachables objectToAttach)
+    public virtual void OnAttach(Attachables objectToAttach)
     {
         var attachableStruct = attachables.Where(a => a.attachable.GetComponent<Attachables>().GetType() == objectToAttach.GetType() && a.attachableTransform.childCount == 0).FirstOrDefault();
         if (attachableStruct.attachableTransform != null)
@@ -113,6 +112,7 @@ public class Gun : Holdable, IAttachable
         {
             Debug.LogWarning("Attachable could not be found or has already been attached.");
         }
+
     } 
 
     #endregion
