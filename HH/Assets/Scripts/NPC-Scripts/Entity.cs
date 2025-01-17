@@ -73,9 +73,6 @@ public abstract class Entity : MonoBehaviour, IDamagable
     [SerializeField] bool shouldDebugPrint;
 
     public AudioSource hit;
-    public AudioSource roar;
-    public AudioSource walking;
-    public AudioSource running;
     //Take the stats from the npcStats scriptable object and applies those to this object
     protected virtual void Awake()
     {
@@ -221,7 +218,6 @@ public abstract class Entity : MonoBehaviour, IDamagable
         animator.SetBool("IsIdle", true);
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsRunnning", false);
-        roar.Play();
         yield return new WaitForSeconds(Random.Range(_standStillTime.x, _standStillTime.y));
         if (_currentState != EntityStates.standing) { yield return null; }
         ActOnState(EntityStates.searching);
@@ -234,7 +230,6 @@ public abstract class Entity : MonoBehaviour, IDamagable
         animator.SetBool("IsWalking", true);
         animator.SetBool("IsIdle", false);
         animator.SetBool("IsRunnning", false);
-        walking.Play();
         while (_currentState == EntityStates.searching)
         {
             yield return new WaitForSeconds(0.1f);
@@ -276,7 +271,6 @@ public abstract class Entity : MonoBehaviour, IDamagable
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsIdle", false);
         GetRandomPosToMoveTo();
-        running.Play();
         float timeTillEnd = _scaredTime;
         while (timeTillEnd > 0)
         {

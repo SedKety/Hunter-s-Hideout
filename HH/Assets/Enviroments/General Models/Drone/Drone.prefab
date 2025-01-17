@@ -55,9 +55,9 @@ MonoBehaviour:
   _headGo: {fileID: 0}
   _currentState: 0
   shouldDebugPrint: 0
+  hit: {fileID: 0}
   droneRestPad: {fileID: 0}
   heldItemSpawnPoint: {fileID: 6522426352831408483}
-  currentHeldItemGO: {fileID: 0}
   propellors:
   - {fileID: 4397760829021497828}
   - {fileID: 8198481813019177760}
@@ -584,10 +584,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5750532309653499269, guid: 81d45f4706680704fa857f16b0ae687f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61e9d19b42ff2b7469d818c57cb46dff, type: 2}
+    - target: {fileID: -5166156329421775347, guid: 81d45f4706680704fa857f16b0ae687f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61e9d19b42ff2b7469d818c57cb46dff, type: 2}
+    - target: {fileID: -4907339699135585221, guid: 81d45f4706680704fa857f16b0ae687f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61e9d19b42ff2b7469d818c57cb46dff, type: 2}
     - target: {fileID: 919132149155446097, guid: 81d45f4706680704fa857f16b0ae687f, type: 3}
       propertyPath: m_Name
       value: Drone2
       objectReference: {fileID: 0}
+    - target: {fileID: 4923987919512015698, guid: 81d45f4706680704fa857f16b0ae687f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61e9d19b42ff2b7469d818c57cb46dff, type: 2}
+    - target: {fileID: 8868379778017924442, guid: 81d45f4706680704fa857f16b0ae687f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61e9d19b42ff2b7469d818c57cb46dff, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
